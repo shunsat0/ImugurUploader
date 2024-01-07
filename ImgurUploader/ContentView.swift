@@ -13,6 +13,7 @@ struct ContentView: View {
     @State private var selectedImage: UIImage?
     @State private var uploadedImageUrl: URL?
     @State private var showingAlert = false
+    @State private var pasteString  = ""
     
     
     var body: some View {
@@ -58,7 +59,7 @@ struct ContentView: View {
             ImagePicker(image: $selectedImage)
         }
         .alert(isPresented: $showingAlert) {
-            UIPasteboard.general.string = "テスト"
+            UIPasteboard.general.string = pasteString
             
             return Alert(
                 title: Text("Image Uploaded!"),
@@ -94,6 +95,7 @@ struct ContentView: View {
                    let urlString = link["link"] as? String,
                    let url = URL(string: urlString) {
                     print("Uploaded to Imgur: \(url.absoluteString)")
+                    pasteString = url.absoluteString
                     
                     DispatchQueue.main.async {
                         uploadedImageUrl = url
