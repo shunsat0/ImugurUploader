@@ -79,7 +79,7 @@ struct ContentView: View {
         let url = URL(string: "https://api.imgur.com/3/image")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.setValue("Client-ID 665c7bc84e08d25", forHTTPHeaderField: "Authorization")
+        request.setValue("Client-ID ac493a532606dba", forHTTPHeaderField: "Authorization")
         
         let task = URLSession.shared.uploadTask(with: request, from: imageData) { data, response, error in
             guard let data = data, error == nil else {
