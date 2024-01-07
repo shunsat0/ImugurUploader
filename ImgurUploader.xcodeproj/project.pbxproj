@@ -1,0 +1,593 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2442EEA32B4ABB7300ECDE60 /* ImgurUploaderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2442EEA22B4ABB7300ECDE60 /* ImgurUploaderApp.swift */; };
+		2442EEA52B4ABB7300ECDE60 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2442EEA42B4ABB7300ECDE60 /* ContentView.swift */; };
+		2442EEA72B4ABB7400ECDE60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2442EEA62B4ABB7400ECDE60 /* Assets.xcassets */; };
+		2442EEAA2B4ABB7400ECDE60 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2442EEA92B4ABB7400ECDE60 /* Preview Assets.xcassets */; };
+		2442EEB42B4ABB7400ECDE60 /* ImgurUploaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2442EEB32B4ABB7400ECDE60 /* ImgurUploaderTests.swift */; };
+		2442EEBE2B4ABB7400ECDE60 /* ImgurUploaderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2442EEBD2B4ABB7400ECDE60 /* ImgurUploaderUITests.swift */; };
+		2442EEC02B4ABB7400ECDE60 /* ImgurUploaderUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2442EEBF2B4ABB7400ECDE60 /* ImgurUploaderUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2442EEB02B4ABB7400ECDE60 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2442EE972B4ABB7300ECDE60 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2442EE9E2B4ABB7300ECDE60;
+			remoteInfo = ImgurUploader;
+		};
+		2442EEBA2B4ABB7400ECDE60 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2442EE972B4ABB7300ECDE60 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2442EE9E2B4ABB7300ECDE60;
+			remoteInfo = ImgurUploader;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2442EE9F2B4ABB7300ECDE60 /* ImgurUploader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImgurUploader.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2442EEA22B4ABB7300ECDE60 /* ImgurUploaderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgurUploaderApp.swift; sourceTree = "<group>"; };
+		2442EEA42B4ABB7300ECDE60 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		2442EEA62B4ABB7400ECDE60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2442EEA92B4ABB7400ECDE60 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2442EEAF2B4ABB7400ECDE60 /* ImgurUploaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImgurUploaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2442EEB32B4ABB7400ECDE60 /* ImgurUploaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgurUploaderTests.swift; sourceTree = "<group>"; };
+		2442EEB92B4ABB7400ECDE60 /* ImgurUploaderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImgurUploaderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2442EEBD2B4ABB7400ECDE60 /* ImgurUploaderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgurUploaderUITests.swift; sourceTree = "<group>"; };
+		2442EEBF2B4ABB7400ECDE60 /* ImgurUploaderUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgurUploaderUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2442EE9C2B4ABB7300ECDE60 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2442EEAC2B4ABB7400ECDE60 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2442EEB62B4ABB7400ECDE60 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2442EE962B4ABB7300ECDE60 = {
+			isa = PBXGroup;
+			children = (
+				2442EEA12B4ABB7300ECDE60 /* ImgurUploader */,
+				2442EEB22B4ABB7400ECDE60 /* ImgurUploaderTests */,
+				2442EEBC2B4ABB7400ECDE60 /* ImgurUploaderUITests */,
+				2442EEA02B4ABB7300ECDE60 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2442EEA02B4ABB7300ECDE60 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2442EE9F2B4ABB7300ECDE60 /* ImgurUploader.app */,
+				2442EEAF2B4ABB7400ECDE60 /* ImgurUploaderTests.xctest */,
+				2442EEB92B4ABB7400ECDE60 /* ImgurUploaderUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2442EEA12B4ABB7300ECDE60 /* ImgurUploader */ = {
+			isa = PBXGroup;
+			children = (
+				2442EEA22B4ABB7300ECDE60 /* ImgurUploaderApp.swift */,
+				2442EEA42B4ABB7300ECDE60 /* ContentView.swift */,
+				2442EEA62B4ABB7400ECDE60 /* Assets.xcassets */,
+				2442EEA82B4ABB7400ECDE60 /* Preview Content */,
+			);
+			path = ImgurUploader;
+			sourceTree = "<group>";
+		};
+		2442EEA82B4ABB7400ECDE60 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				2442EEA92B4ABB7400ECDE60 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		2442EEB22B4ABB7400ECDE60 /* ImgurUploaderTests */ = {
+			isa = PBXGroup;
+			children = (
+				2442EEB32B4ABB7400ECDE60 /* ImgurUploaderTests.swift */,
+			);
+			path = ImgurUploaderTests;
+			sourceTree = "<group>";
+		};
+		2442EEBC2B4ABB7400ECDE60 /* ImgurUploaderUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2442EEBD2B4ABB7400ECDE60 /* ImgurUploaderUITests.swift */,
+				2442EEBF2B4ABB7400ECDE60 /* ImgurUploaderUITestsLaunchTests.swift */,
+			);
+			path = ImgurUploaderUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2442EE9E2B4ABB7300ECDE60 /* ImgurUploader */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2442EEC32B4ABB7400ECDE60 /* Build configuration list for PBXNativeTarget "ImgurUploader" */;
+			buildPhases = (
+				2442EE9B2B4ABB7300ECDE60 /* Sources */,
+				2442EE9C2B4ABB7300ECDE60 /* Frameworks */,
+				2442EE9D2B4ABB7300ECDE60 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ImgurUploader;
+			productName = ImgurUploader;
+			productReference = 2442EE9F2B4ABB7300ECDE60 /* ImgurUploader.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2442EEAE2B4ABB7400ECDE60 /* ImgurUploaderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2442EEC62B4ABB7400ECDE60 /* Build configuration list for PBXNativeTarget "ImgurUploaderTests" */;
+			buildPhases = (
+				2442EEAB2B4ABB7400ECDE60 /* Sources */,
+				2442EEAC2B4ABB7400ECDE60 /* Frameworks */,
+				2442EEAD2B4ABB7400ECDE60 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2442EEB12B4ABB7400ECDE60 /* PBXTargetDependency */,
+			);
+			name = ImgurUploaderTests;
+			productName = ImgurUploaderTests;
+			productReference = 2442EEAF2B4ABB7400ECDE60 /* ImgurUploaderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2442EEB82B4ABB7400ECDE60 /* ImgurUploaderUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2442EEC92B4ABB7400ECDE60 /* Build configuration list for PBXNativeTarget "ImgurUploaderUITests" */;
+			buildPhases = (
+				2442EEB52B4ABB7400ECDE60 /* Sources */,
+				2442EEB62B4ABB7400ECDE60 /* Frameworks */,
+				2442EEB72B4ABB7400ECDE60 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2442EEBB2B4ABB7400ECDE60 /* PBXTargetDependency */,
+			);
+			name = ImgurUploaderUITests;
+			productName = ImgurUploaderUITests;
+			productReference = 2442EEB92B4ABB7400ECDE60 /* ImgurUploaderUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2442EE972B4ABB7300ECDE60 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1510;
+				LastUpgradeCheck = 1510;
+				TargetAttributes = {
+					2442EE9E2B4ABB7300ECDE60 = {
+						CreatedOnToolsVersion = 15.1;
+					};
+					2442EEAE2B4ABB7400ECDE60 = {
+						CreatedOnToolsVersion = 15.1;
+						TestTargetID = 2442EE9E2B4ABB7300ECDE60;
+					};
+					2442EEB82B4ABB7400ECDE60 = {
+						CreatedOnToolsVersion = 15.1;
+						TestTargetID = 2442EE9E2B4ABB7300ECDE60;
+					};
+				};
+			};
+			buildConfigurationList = 2442EE9A2B4ABB7300ECDE60 /* Build configuration list for PBXProject "ImgurUploader" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2442EE962B4ABB7300ECDE60;
+			productRefGroup = 2442EEA02B4ABB7300ECDE60 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2442EE9E2B4ABB7300ECDE60 /* ImgurUploader */,
+				2442EEAE2B4ABB7400ECDE60 /* ImgurUploaderTests */,
+				2442EEB82B4ABB7400ECDE60 /* ImgurUploaderUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2442EE9D2B4ABB7300ECDE60 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2442EEAA2B4ABB7400ECDE60 /* Preview Assets.xcassets in Resources */,
+				2442EEA72B4ABB7400ECDE60 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2442EEAD2B4ABB7400ECDE60 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2442EEB72B4ABB7400ECDE60 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2442EE9B2B4ABB7300ECDE60 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2442EEA52B4ABB7300ECDE60 /* ContentView.swift in Sources */,
+				2442EEA32B4ABB7300ECDE60 /* ImgurUploaderApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2442EEAB2B4ABB7400ECDE60 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2442EEB42B4ABB7400ECDE60 /* ImgurUploaderTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2442EEB52B4ABB7400ECDE60 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2442EEBE2B4ABB7400ECDE60 /* ImgurUploaderUITests.swift in Sources */,
+				2442EEC02B4ABB7400ECDE60 /* ImgurUploaderUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2442EEB12B4ABB7400ECDE60 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2442EE9E2B4ABB7300ECDE60 /* ImgurUploader */;
+			targetProxy = 2442EEB02B4ABB7400ECDE60 /* PBXContainerItemProxy */;
+		};
+		2442EEBB2B4ABB7400ECDE60 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2442EE9E2B4ABB7300ECDE60 /* ImgurUploader */;
+			targetProxy = 2442EEBA2B4ABB7400ECDE60 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		2442EEC12B4ABB7400ECDE60 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2442EEC22B4ABB7400ECDE60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2442EEC42B4ABB7400ECDE60 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"ImgurUploader/Preview Content\"";
+				DEVELOPMENT_TEAM = WB32WK7B28;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shunsato.ImgurUploader;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2442EEC52B4ABB7400ECDE60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"ImgurUploader/Preview Content\"";
+				DEVELOPMENT_TEAM = WB32WK7B28;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shunsato.ImgurUploader;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		2442EEC72B4ABB7400ECDE60 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WB32WK7B28;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shunsato.ImgurUploaderTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ImgurUploader.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ImgurUploader";
+			};
+			name = Debug;
+		};
+		2442EEC82B4ABB7400ECDE60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WB32WK7B28;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shunsato.ImgurUploaderTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ImgurUploader.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ImgurUploader";
+			};
+			name = Release;
+		};
+		2442EECA2B4ABB7400ECDE60 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WB32WK7B28;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shunsato.ImgurUploaderUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ImgurUploader;
+			};
+			name = Debug;
+		};
+		2442EECB2B4ABB7400ECDE60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WB32WK7B28;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shunsato.ImgurUploaderUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ImgurUploader;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2442EE9A2B4ABB7300ECDE60 /* Build configuration list for PBXProject "ImgurUploader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2442EEC12B4ABB7400ECDE60 /* Debug */,
+				2442EEC22B4ABB7400ECDE60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2442EEC32B4ABB7400ECDE60 /* Build configuration list for PBXNativeTarget "ImgurUploader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2442EEC42B4ABB7400ECDE60 /* Debug */,
+				2442EEC52B4ABB7400ECDE60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2442EEC62B4ABB7400ECDE60 /* Build configuration list for PBXNativeTarget "ImgurUploaderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2442EEC72B4ABB7400ECDE60 /* Debug */,
+				2442EEC82B4ABB7400ECDE60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2442EEC92B4ABB7400ECDE60 /* Build configuration list for PBXNativeTarget "ImgurUploaderUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2442EECA2B4ABB7400ECDE60 /* Debug */,
+				2442EECB2B4ABB7400ECDE60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2442EE972B4ABB7300ECDE60 /* Project object */;
+}
