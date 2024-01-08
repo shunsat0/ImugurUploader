@@ -18,7 +18,7 @@ func saveURLs(_ urls: [String]) {
 }
 
 // アプリ起動時にURLリストを読み込む
-var photoArray: [String] = loadURLs()
+var photoArray: [String] = loadURLs().reversed()
 
 // URLを追加して保存する関数
 func addURL(_ url: String) {
