@@ -7,7 +7,21 @@
 
 import Foundation
 
-var photoArray:[String] =  [
-    "https://i.imgur.com/6ty0r2c",
-    "https://i.imgur.com/6ty0r2c.jpeg"
-]
+// UserDefaultsからURLリストを読み込む関数
+func loadURLs() -> [String] {
+    UserDefaults.standard.stringArray(forKey: "savedURLs") ?? []
+}
+
+// UserDefaultsにURLリストを保存する関数
+func saveURLs(_ urls: [String]) {
+    UserDefaults.standard.set(urls, forKey: "savedURLs")
+}
+
+// アプリ起動時にURLリストを読み込む
+var photoArray: [String] = loadURLs()
+
+// URLを追加して保存する関数
+func addURL(_ url: String) {
+    photoArray.append(url)
+    saveURLs(photoArray)
+}
