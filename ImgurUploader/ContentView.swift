@@ -20,6 +20,57 @@ struct ContentView: View {
     
     
     var body: some View {
+        NavigationStack {
+            VStack {
+                if let image = selectedImage {
+                    Image(uiImage: image)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    
+                    HStack {
+                        Button(action: {
+                            uploadImageToImgur(image: image)
+                        }, label: {
+                            Text("Upload to Imgur")
+                                .fontWeight(.bold)
+                                .padding()
+                                .background(Color.green)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                        })
+                        .padding(.horizontal)
+                        
+                        Button(action: {
+                            selectedImage = nil
+                            showingToolbar = true
+                        }, label: {
+                            Text("Cancel")
+                                .fontWeight(.bold)
+                                .padding()
+                                .background(Color.red)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                        })
+                        .padding(.horizontal)
+                    }
+                }
+                
+                if selectedImage == nil {
+                     Button(action: {
+                         showingImagePicker = true
+                         showingToolbar = false
+                     }, label: {
+                         Text("Select Image")
+                             .fontWeight(.semibold)
+                             .padding()
+                             .background(Color.blue)
+                             .foregroundColor(.white)
+                             .cornerRadius(10)
+                     })
+                     .padding(.horizontal)
+                     .padding(.bottom)
+                 }
                 
             }
             .toolbar {
