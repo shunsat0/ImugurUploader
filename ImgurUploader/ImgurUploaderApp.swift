@@ -9,6 +9,12 @@ import SwiftUI
 
 @main
 struct ImgurUploaderApp: App {
+    init() {
+        UIPageControl.appearance().currentPageIndicatorTintColor = UIColor.systemBlue
+        
+        UIPageControl.appearance().pageIndicatorTintColor = UIColor.systemGray
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
