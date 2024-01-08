@@ -54,6 +54,7 @@ struct ContentView: View {
                         })
                         .padding(.horizontal)
                     }
+                    .padding()
                 }
                 
                 if selectedImage == nil {
