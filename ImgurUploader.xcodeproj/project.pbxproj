@@ -14,6 +14,8 @@
 		2442EEB42B4ABB7400ECDE60 /* ImgurUploaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2442EEB32B4ABB7400ECDE60 /* ImgurUploaderTests.swift */; };
 		2442EEBE2B4ABB7400ECDE60 /* ImgurUploaderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2442EEBD2B4ABB7400ECDE60 /* ImgurUploaderUITests.swift */; };
 		2442EEC02B4ABB7400ECDE60 /* ImgurUploaderUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2442EEBF2B4ABB7400ECDE60 /* ImgurUploaderUITestsLaunchTests.swift */; };
+		24A5D3372B4BD73300CA8D89 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A5D3362B4BD73300CA8D89 /* ListView.swift */; };
+		24A5D3392B4BD91A00CA8D89 /* PhotoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A5D3382B4BD91A00CA8D89 /* PhotoData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		2442EEB92B4ABB7400ECDE60 /* ImgurUploaderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImgurUploaderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2442EEBD2B4ABB7400ECDE60 /* ImgurUploaderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgurUploaderUITests.swift; sourceTree = "<group>"; };
 		2442EEBF2B4ABB7400ECDE60 /* ImgurUploaderUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgurUploaderUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		24A5D3362B4BD73300CA8D89 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		24A5D3382B4BD91A00CA8D89 /* PhotoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +99,9 @@
 			isa = PBXGroup;
 			children = (
 				2442EEA22B4ABB7300ECDE60 /* ImgurUploaderApp.swift */,
+				24A5D3382B4BD91A00CA8D89 /* PhotoData.swift */,
 				2442EEA42B4ABB7300ECDE60 /* ContentView.swift */,
+				24A5D3362B4BD73300CA8D89 /* ListView.swift */,
 				2442EEA62B4ABB7400ECDE60 /* Assets.xcassets */,
 				2442EEA82B4ABB7400ECDE60 /* Preview Content */,
 			);
@@ -259,6 +265,8 @@
 			files = (
 				2442EEA52B4ABB7300ECDE60 /* ContentView.swift in Sources */,
 				2442EEA32B4ABB7300ECDE60 /* ImgurUploaderApp.swift in Sources */,
+				24A5D3392B4BD91A00CA8D89 /* PhotoData.swift in Sources */,
+				24A5D3372B4BD73300CA8D89 /* ListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
