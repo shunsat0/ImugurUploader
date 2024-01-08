@@ -14,8 +14,9 @@ struct EditableTextView: UIViewRepresentable {
         let textView = UITextView()
         textView.text = text
         textView.isEditable = false
-        textView.isSelectable = true // テキストの選択を可能にする
-        textView.dataDetectorTypes = .all // URLや日付などを検出
+        textView.isSelectable = true
+        textView.dataDetectorTypes = .all
+        textView.backgroundColor = UIColor.clear
         return textView
     }
     
@@ -56,9 +57,7 @@ struct ListView: View {
                                 .frame(width: 100, height: 100)
                                 .cornerRadius(10)
                                 
-                                EditableTextView(text: item)
-                                    .font(.headline)
-                            }
+                                EditableTextView(text: item)                           }
                         }
                     }
                 }
