@@ -125,8 +125,8 @@ struct ContentView: View {
                    let url = URL(string: urlString) {
                     print("Uploaded to Imgur: \(url.absoluteString)")
                     pasteString = url.absoluteString
-                    photoArray.append(url.absoluteString)
-                    print(photoArray)
+                    addURL(url.absoluteString)
+                    showingToolbar = true
                     
                     DispatchQueue.main.async {
                         uploadedImageUrl = url
