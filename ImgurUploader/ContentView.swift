@@ -82,6 +82,15 @@ struct ContentView: View {
                         }
                     }
             }
+            .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        NavigationLink(destination: InfoView()) {
+                            if showingToolbar {
+                                Image(systemName: "info.circle")
+                            }
+                        }
+                    }
+            }
 
             .sheet(isPresented: $showingImagePicker) {
                 ImagePicker(image: $selectedImage)

@@ -16,6 +16,7 @@
 		2442EEC02B4ABB7400ECDE60 /* ImgurUploaderUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2442EEBF2B4ABB7400ECDE60 /* ImgurUploaderUITestsLaunchTests.swift */; };
 		24A5D3372B4BD73300CA8D89 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A5D3362B4BD73300CA8D89 /* ListView.swift */; };
 		24A5D3392B4BD91A00CA8D89 /* PhotoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A5D3382B4BD91A00CA8D89 /* PhotoData.swift */; };
+		24A5D33D2B4C019500CA8D89 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A5D33C2B4C019500CA8D89 /* InfoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		2442EEBF2B4ABB7400ECDE60 /* ImgurUploaderUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgurUploaderUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		24A5D3362B4BD73300CA8D89 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		24A5D3382B4BD91A00CA8D89 /* PhotoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoData.swift; sourceTree = "<group>"; };
+		24A5D33C2B4C019500CA8D89 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				24A5D3382B4BD91A00CA8D89 /* PhotoData.swift */,
 				2442EEA42B4ABB7300ECDE60 /* ContentView.swift */,
 				24A5D3362B4BD73300CA8D89 /* ListView.swift */,
+				24A5D33C2B4C019500CA8D89 /* InfoView.swift */,
 				2442EEA62B4ABB7400ECDE60 /* Assets.xcassets */,
 				2442EEA82B4ABB7400ECDE60 /* Preview Content */,
 			);
@@ -266,6 +269,7 @@
 				2442EEA52B4ABB7300ECDE60 /* ContentView.swift in Sources */,
 				2442EEA32B4ABB7300ECDE60 /* ImgurUploaderApp.swift in Sources */,
 				24A5D3392B4BD91A00CA8D89 /* PhotoData.swift in Sources */,
+				24A5D33D2B4C019500CA8D89 /* InfoView.swift in Sources */,
 				24A5D3372B4BD73300CA8D89 /* ListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
