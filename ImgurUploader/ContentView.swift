@@ -94,8 +94,7 @@ struct ContentView: View {
             }
 
             .sheet(isPresented: $showingImagePicker) {
-                ImagePicker(image: $selectedImage)
-
+                ImagePicker(image: $selectedImage, showingToolbar: $showingToolbar)
             }
             .alert(isPresented: $showingAlert) {
                 UIPasteboard.general.string = pasteString
@@ -158,6 +157,7 @@ struct ContentView: View {
 struct ImagePicker: UIViewControllerRepresentable {
     @Environment(\.presentationMode) var presentationMode
     @Binding var image: UIImage?
+    @Binding var showingToolbar: Bool
     
     func makeUIViewController(context: Context) -> UIImagePickerController {
         let imagePicker = UIImagePickerController()
@@ -186,6 +186,11 @@ struct ImagePicker: UIViewControllerRepresentable {
             }
             
             parent.presentationMode.wrappedValue.dismiss()
+        }
+        
+        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+            parent.presentationMode.wrappedValue.dismiss()
+            parent.showingToolbar = true
         }
     }
 }
