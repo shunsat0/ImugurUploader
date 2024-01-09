@@ -8,8 +8,21 @@
 import SwiftUI
 
 struct InfoView: View {
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        TabView {
+            ForEach(1...8, id: \.self) { item in
+                Image("\(item)")
+                    .resizable()
+                    .scaledToFit()
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(Color.black, lineWidth: 0.5)
+                    )
+            }
+        }
+        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
     }
 }
 

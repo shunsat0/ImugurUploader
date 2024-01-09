@@ -78,7 +78,7 @@ struct ContentView: View {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         NavigationLink(destination: ListView()) {
                             if showingToolbar {
-                                Text("ListView")
+                                Text("Uploaded Images")
                             }
                         }
                     }
