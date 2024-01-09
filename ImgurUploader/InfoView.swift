@@ -11,7 +11,7 @@ struct InfoView: View {
     
     var body: some View {
         TabView {
-            ForEach(1...8, id: \.self) { item in
+            ForEach(1...9, id: \.self) { item in
                 Image("\(item)")
                     .resizable()
                     .scaledToFit()
