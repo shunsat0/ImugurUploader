@@ -17,20 +17,35 @@ struct ContentView: View {
     @State var showChildView: Bool = false
     @State private var showingToolbar = true
     @State private var slectedImage = false
-    
+    @State private var isUploading = false
+    @State private var progressValue = 0.0
+
+    let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
     
     var body: some View {
         NavigationStack {
             VStack {
                 if let image = selectedImage {
-                    Image(uiImage: image)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    ZStack {
+                        Image(uiImage: image)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        
+                        if(isUploading) {
+                            ProgressView("Uploading…", value: progressValue, total: 100)
+                            .onReceive(timer) { _ in
+                                if progressValue < 100 {
+                                    progressValue += 1
+                                }
+                            }
+                        }
+                    }
                     
                     HStack {
                         Button(action: {
                             uploadImageToImgur(image: image)
+                            isUploading = true
                         }, label: {
                             Text("Upload to Imgur")
                                 .fontWeight(.bold)
@@ -58,41 +73,41 @@ struct ContentView: View {
                 }
                 
                 if selectedImage == nil {
-                     Button(action: {
-                         showingImagePicker = true
-                         showingToolbar = false
-                     }, label: {
-                         Text("Select Image")
-                             .fontWeight(.semibold)
-                             .padding()
-                             .background(Color.blue)
-                             .foregroundColor(.white)
-                             .cornerRadius(10)
-                     })
-                     .padding(.horizontal)
-                     .padding(.bottom)
-                 }
+                    Button(action: {
+                        showingImagePicker = true
+                        showingToolbar = false
+                    }, label: {
+                        Text("Select Image")
+                            .fontWeight(.semibold)
+                            .padding()
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                    })
+                    .padding(.horizontal)
+                    .padding(.bottom)
+                }
                 
             }
             .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        NavigationLink(destination: ListView()) {
-                            if showingToolbar {
-                                Text("Uploaded Images")
-                            }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink(destination: ListView()) {
+                        if showingToolbar {
+                            Text("Uploaded Images")
                         }
                     }
+                }
             }
             .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        NavigationLink(destination: InfoView()) {
-                            if showingToolbar {
-                                Image(systemName: "info.circle")
-                            }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    NavigationLink(destination: InfoView()) {
+                        if showingToolbar {
+                            Image(systemName: "info.circle")
                         }
                     }
+                }
             }
-
+            
             .sheet(isPresented: $showingImagePicker) {
                 ImagePicker(image: $selectedImage, showingToolbar: $showingToolbar)
             }
@@ -105,8 +120,9 @@ struct ContentView: View {
                     dismissButton: .default(Text("OK"))
                 )
             }
-//            .navigationBarTitle("Imgur Uploader")
-        }}
+
+        }
+    }
     
     func uploadImageToImgur(image: UIImage) {
         guard let imageData = image.jpegData(compressionQuality: 1) else {
