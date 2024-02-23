@@ -117,9 +117,24 @@ struct ContentView: View {
         let url = URL(string: "https://api.imgur.com/3/image")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.setValue("Client-ID ac493a532606dba", forHTTPHeaderField: "Authorization")
+        request.setValue("Client-ID d6ee7fa84ca8bd2", forHTTPHeaderField: "Authorization")
         
-        let task = URLSession.shared.uploadTask(with: request, from: imageData) { data, response, error in
+        // Set up the request body
+        let boundary = "Boundary-\(UUID().uuidString)"
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        var body = Data()
+        body.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
+        body.append("Content-Disposition: form-data; name=\"image\"; filename=\"image.jpg\"\r\n".data(using: .utf8)!)
+        body.append("Content-Type: image/jpeg\r\n\r\n".data(using: .utf8)!)
+        body.append(imageData)
+        body.append("\r\n--\(boundary)--\r\n".data(using: .utf8)!)
+        
+        // Assign request body
+        request.httpBody = body
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            isUploading.toggle()
+            
             guard let data = data, error == nil else {
                 print("Error: \(error?.localizedDescription ?? "Unknown error")")
                 return
