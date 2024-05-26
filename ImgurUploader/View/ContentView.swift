@@ -28,7 +28,7 @@ struct ContentView: View {
             VStack {
                 Spacer()
                 
-                Text("\(viewModel.postedImageData!.data.link)")
+                Text("\(viewModel.postedImageData?.data.link)")
                 
                 if let image {
                     Image(uiImage: image)

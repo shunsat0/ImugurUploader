@@ -116,7 +116,7 @@
 			children = (
 				2442EEA22B4ABB7300ECDE60 /* ImgurUploaderApp.swift */,
 				24328E342C01E5E900AC3430 /* Model */,
-				24AF264C2BFA482B00578A16 /* Service */,
+				24AF264C2BFA482B00578A16 /* ViewModel */,
 				24AF264A2BFA47FD00578A16 /* View */,
 				2442EEA62B4ABB7400ECDE60 /* Assets.xcassets */,
 				2442EEA82B4ABB7400ECDE60 /* Preview Content */,
@@ -159,13 +159,13 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		24AF264C2BFA482B00578A16 /* Service */ = {
+		24AF264C2BFA482B00578A16 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				24AF264D2BFA485E00578A16 /* ImgurService.swift */,
 				24A5D3382B4BD91A00CA8D89 /* PhotoData.swift */,
 			);
-			path = Service;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
