@@ -18,6 +18,7 @@ struct ImgurUploaderApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+            //TestUI()
         }
     }
 }

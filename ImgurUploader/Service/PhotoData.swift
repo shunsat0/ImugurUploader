@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import SwiftData
+
 
 // UserDefaultsからURLリストを読み込む関数
 func loadURLs() -> [String] {
@@ -25,3 +27,11 @@ func addURL(_ url: String) {
     photoArray.append(url)
     saveURLs(photoArray)
 }
+
+
+
+// SwiftDataを使ったデータ管理
+//@Model
+//final class PhotoData {
+//    var url:
+//}
