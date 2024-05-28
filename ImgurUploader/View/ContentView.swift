@@ -21,9 +21,7 @@ struct ContentView: View {
         
         NavigationStack {
             VStack {
-                
-                Text("\(viewModel.postedImageData?.data.link)")
-                
+                                
                 ZStack {
                     if let image {
                         Image(uiImage: image)
@@ -61,8 +59,8 @@ struct ContentView: View {
                 Button(action: {
                     Task {
                         await viewModel.postImage(image: image!)
-                    }
-
+                    }                                       
+                    
                 }, label: {
                     Text("Start Upload")
                         .padding(5)
@@ -100,6 +98,19 @@ struct ContentView: View {
                     message: Text("The URL has been copied to the clipboard."),
                     dismissButton: .default(Text("OK"))
                 )
+            }
+            .sheet(isPresented: $viewModel.isShowSheet){
+                VStack {
+                    Text("\(viewModel.postedImageData!.data.link)")
+                    
+                    Button(action: {
+                            viewModel.isShowSheet = false
+                            image = nil
+                            showingToolbar = true
+                    }, label: {
+                        Text("Copy")
+                    })
+                }
             }
             
         }
