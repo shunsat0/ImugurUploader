@@ -16,6 +16,7 @@ final class ImgurDataViewModel: ObservableObject {
     @Published var postedImageData: ImgurDataModel?
     @Published var errorMessage: String?
     @Published var isUploading: Bool = false
+    @Published var isShowSheet: Bool = false
 
     func postImage(image: UIImage) async {
         let url  = "https://api.imgur.com/3/image"
@@ -32,6 +33,7 @@ final class ImgurDataViewModel: ObservableObject {
         
         DispatchQueue.main.async {
             self.isUploading = true
+            self.isShowSheet = false
         }
         
         AF.upload(
@@ -43,6 +45,7 @@ final class ImgurDataViewModel: ObservableObject {
         ).responseData { response in
             DispatchQueue.main.async {
                 self.isUploading = false
+                self.isShowSheet = true
             }
 
             guard let data  = response.data else { return }
