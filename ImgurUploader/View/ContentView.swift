@@ -12,13 +12,10 @@ struct ContentView: View {
     @State private var showingAlert:Bool = false
     @State private var pasteString:String  = ""
     @State private var showingToolbar:Bool = true
-    @State var isUploading:Bool = false
     @State var selectedItem: PhotosPickerItem?
     @State var image: UIImage?
     @State var isSelected: Bool = false
-    
     @StateObject private var viewModel = ImgurDataViewModel()
-    
     
     var body: some View {
         
