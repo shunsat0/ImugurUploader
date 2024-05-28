@@ -11,10 +11,8 @@ import PhotosUI
 struct ContentView: View {
     @State private var showingAlert:Bool = false
     @State private var pasteString:String  = ""
-    @State var showChildView: Bool = false
     @State private var showingToolbar:Bool = true
-    @State private var isUploading:Bool = false
-    
+    @State var isUploading:Bool = false
     @State var selectedItem: PhotosPickerItem?
     @State var image: UIImage?
     @State var isSelected: Bool = false
@@ -30,11 +28,19 @@ struct ContentView: View {
                 
                 Text("\(viewModel.postedImageData?.data.link)")
                 
-                if let image {
-                    Image(uiImage: image)
-                        .resizable()
-                        .scaledToFit()
-                        .padding(20)
+                ZStack {
+                    if let image {
+                        Image(uiImage: image)
+                            .resizable()
+                            .scaledToFit()
+                            .padding(20)
+                    }
+                    
+                    if(viewModel.isUploading) {
+                        ProgressView()
+                            .scaleEffect(2.0)
+                    }
+                    
                 }
                 
                 
@@ -52,10 +58,14 @@ struct ContentView: View {
                         isSelected = true
                     }
                 }
-                                
+                
+                
+                
                 Button(action: {
-                    showingToolbar = false
-                    viewModel.postImage(image: image!)
+                    Task {
+                        await viewModel.postImage(image: image!)
+                    }
+
                 }, label: {
                     Text("Start Upload")
                         .padding(5)
