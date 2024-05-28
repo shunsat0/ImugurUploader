@@ -15,9 +15,10 @@ final class ImgurDataViewModel: ObservableObject {
     
     @Published var postedImageData: ImgurDataModel?
     @Published var errorMessage: String?
+    @Published var isUploading: Bool = false
+    @Published var isShowSheet: Bool = false
 
-    
-    func postImage(image: UIImage) {
+    func postImage(image: UIImage) async {
         let url  = "https://api.imgur.com/3/image"
         let clientId = "d6ee7fa84ca8bd2"
         
@@ -30,6 +31,11 @@ final class ImgurDataViewModel: ObservableObject {
             "Authorization": "Client-ID \(clientId)"
         ]
         
+        DispatchQueue.main.async {
+            self.isUploading = true
+            self.isShowSheet = false
+        }
+        
         AF.upload(
             multipartFormData: { multipartFormData in
                 multipartFormData.append(imageData, withName: "image")
@@ -37,6 +43,11 @@ final class ImgurDataViewModel: ObservableObject {
             to: url,
             headers: headers
         ).responseData { response in
+            DispatchQueue.main.async {
+                self.isUploading = false
+                self.isShowSheet = true
+            }
+
             guard let data  = response.data else { return }
             
             do {
