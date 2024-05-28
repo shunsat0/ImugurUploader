@@ -50,6 +50,7 @@ struct ContentView: View {
                     )
                 }
                 .onChange(of: selectedItem) {
+                    showingToolbar = false
                     Task {
                         guard let imageData = try await selectedItem?.loadTransferable(type: Data.self) else { return }
                         guard let uiImage = UIImage(data: imageData) else { return }
