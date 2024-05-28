@@ -24,7 +24,6 @@ struct ContentView: View {
         
         NavigationStack {
             VStack {
-                Spacer()
                 
                 Text("\(viewModel.postedImageData?.data.link)")
                 
@@ -75,7 +74,7 @@ struct ContentView: View {
                 })
                 .disabled(!isSelected)
                 
-                Spacer()
+                
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
