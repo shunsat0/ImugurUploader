@@ -21,7 +21,7 @@ struct ContentView: View {
         
         NavigationStack {
             VStack {
-                                
+                
                 ZStack {
                     if let image {
                         Image(uiImage: image)
@@ -59,7 +59,7 @@ struct ContentView: View {
                 Button(action: {
                     Task {
                         await viewModel.postImage(image: image!)
-                    }                                       
+                    }
                     
                 }, label: {
                     Text("Start Upload")
@@ -99,23 +99,29 @@ struct ContentView: View {
                     dismissButton: .default(Text("OK"))
                 )
             }
-            .sheet(isPresented: $viewModel.isShowSheet){
-                VStack {
+            .sheet(isPresented: $viewModel.isShowSheet,onDismiss: {
+                image = nil
+                showingToolbar = true
+            }){
+                NavigationView {
                     Text("\(viewModel.postedImageData!.data.link)")
-                    
-                    Button(action: {
-                            viewModel.isShowSheet = false
-                            image = nil
-                            showingToolbar = true
-                    }, label: {
-                        Text("Copy")
-                    })
+                        .textSelection(.enabled)
+                        .font(.headline)
+                        .foregroundColor(.blue)
+                        .toolbar {
+                            ToolbarItem {
+                                Button(action: {
+                                    viewModel.isShowSheet = false
+                                }, label: {
+                                    Text("close")
+                                })
+                            }
+                        }
                 }
+                
             }
-            
         }
     }
-    
 }
 
 
