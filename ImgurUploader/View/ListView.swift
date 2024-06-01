@@ -72,13 +72,63 @@ struct ListView: View {
                         .foregroundColor(.gray)
                     }
                 }
+                
+                
             }
+            
+            OldListView()
+            
         }
         
     }
     
 }
 
+struct OldListView: View {
+    
+    var body: some View {
+        guard !photoArray.isEmpty else {
+            return AnyView(EmptyView())
+        }
+        
+        return AnyView(
+            Section(header: Text("Old Images.(Sorry.You can not delete old images.)")) {
+                ForEach(photoArray, id: \.self) { oldData in
+                    HStack {
+                        if let imageUrl = URL(string: oldData) {
+                            AsyncImage(url: imageUrl) { phase in
+                                switch phase {
+                                case .success(let image):
+                                    image.resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 60, height: 60)
+                                case .failure:
+                                    Image(systemName: "photo")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 60, height: 60)
+                                case .empty:
+                                    ProgressView()
+                                @unknown default:
+                                    EmptyView()
+                                }
+                            }
+                            .frame(width: 100, height: 100)
+                            .cornerRadius(10)
+                        }
+                        
+                        VStack(alignment: .leading) {
+                            Text(oldData)
+                                .textSelection(.enabled)
+                                .font(.caption)
+                                .foregroundColor(.blue)
+                        }
+                    }
+                }
+            }
+        )
+    }
+}
 
 
 #Preview {
