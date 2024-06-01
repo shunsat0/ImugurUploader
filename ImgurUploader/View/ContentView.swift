@@ -17,6 +17,8 @@ struct ContentView: View {
     @State var isSelected: Bool = false
     @StateObject private var viewModel = ImgurDataViewModel()
     
+    @Environment(\.modelContext) private var modelContext
+    
     var body: some View {
         
         NavigationStack {
@@ -54,8 +56,6 @@ struct ContentView: View {
                     }
                 }
                 
-                
-                
                 Button(action: {
                     Task {
                         await viewModel.postImage(image: image!)
@@ -76,7 +76,7 @@ struct ContentView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink(destination: ListView()) {
                         if showingToolbar {
-                            Text("Uploaded Images")
+                            Image(systemName: "photo.stack.fill")
                         }
                     }
                 }
@@ -102,6 +102,10 @@ struct ContentView: View {
             .sheet(isPresented: $viewModel.isShowSheet,onDismiss: {
                 image = nil
                 showingToolbar = true
+                
+                /// データ永続化
+                let newData = ImageData(url: viewModel.postedImageData!.data.link, deletehas: viewModel.postedImageData!.data.deletehash)
+                modelContext.insert(newData)
             }){
                 NavigationView {
                     Text("\(viewModel.postedImageData!.data.link)")

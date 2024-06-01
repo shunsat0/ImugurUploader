@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct ImgurUploaderApp: App {
@@ -18,7 +19,7 @@ struct ImgurUploaderApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-            //TestUI()
+                .modelContainer(for: ImageData.self)
         }
     }
 }
