@@ -15,11 +15,11 @@
 		2442EEB42B4ABB7400ECDE60 /* ImgurUploaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2442EEB32B4ABB7400ECDE60 /* ImgurUploaderTests.swift */; };
 		2442EEBE2B4ABB7400ECDE60 /* ImgurUploaderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2442EEBD2B4ABB7400ECDE60 /* ImgurUploaderUITests.swift */; };
 		2442EEC02B4ABB7400ECDE60 /* ImgurUploaderUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2442EEBF2B4ABB7400ECDE60 /* ImgurUploaderUITestsLaunchTests.swift */; };
-		244B8F1E2C036C90003B3884 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 244B8F1D2C036C90003B3884 /* Alamofire */; };
 		24A5D3372B4BD73300CA8D89 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A5D3362B4BD73300CA8D89 /* ListView.swift */; };
 		24A5D3392B4BD91A00CA8D89 /* PhotoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A5D3382B4BD91A00CA8D89 /* PhotoData.swift */; };
 		24A5D33D2B4C019500CA8D89 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A5D33C2B4C019500CA8D89 /* InfoView.swift */; };
 		24AF264E2BFA485E00578A16 /* ImgurService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AF264D2BFA485E00578A16 /* ImgurService.swift */; };
+		24C3C2852C0B4C4400CD80D2 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 24C3C2842C0B4C4400CD80D2 /* Alamofire */; };
 		24F894AF2C0B1D7B00DCE4FD /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F894AE2C0B1D7B00DCE4FD /* Data.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,7 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				244B8F1E2C036C90003B3884 /* Alamofire in Frameworks */,
+				24C3C2852C0B4C4400CD80D2 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,7 +188,7 @@
 			);
 			name = ImgurUploader;
 			packageProductDependencies = (
-				244B8F1D2C036C90003B3884 /* Alamofire */,
+				24C3C2842C0B4C4400CD80D2 /* Alamofire */,
 			);
 			productName = ImgurUploader;
 			productReference = 2442EE9F2B4ABB7300ECDE60 /* ImgurUploader.app */;
@@ -263,7 +263,7 @@
 			);
 			mainGroup = 2442EE962B4ABB7300ECDE60;
 			packageReferences = (
-				244B8F1C2C036C90003B3884 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				24C3C2832C0B4C4400CD80D2 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 2442EEA02B4ABB7300ECDE60 /* Products */;
 			projectDirPath = "";
@@ -654,7 +654,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		244B8F1C2C036C90003B3884 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		24C3C2832C0B4C4400CD80D2 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
@@ -665,9 +665,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		244B8F1D2C036C90003B3884 /* Alamofire */ = {
+		24C3C2842C0B4C4400CD80D2 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 244B8F1C2C036C90003B3884 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			package = 24C3C2832C0B4C4400CD80D2 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
