@@ -12,6 +12,7 @@ struct ListView: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) private var modelContext
     @Query private var images: [ImageData]
+    @StateObject private var viewModel = ImgurDataViewModel()
     
     var body: some View {
         List {
@@ -50,6 +51,14 @@ struct ListView: View {
                                 Button("Delete", systemImage: "trash", role: .destructive) {
                                     modelContext.delete(image)
                                     // API経由でも削除する
+                                    Task {
+                                        do {
+                                            let response = try await viewModel.delete(hashcode: image.deletehas)
+                                            print("Response: \(response)")
+                                        } catch {
+                                            print("Error: \(error)")
+                                        }
+                                    }
                                 }
                             }
                         

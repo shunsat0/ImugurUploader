@@ -69,4 +69,24 @@ final class ImgurDataViewModel: ObservableObject {
             }
         }
     }
+    
+    func delete(hashcode: String) async throws -> String {
+        let url = URL(string: "https://api.imgur.com/3/image/\(hashcode)")!
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        request.addValue("Client-ID d6ee7fa84ca8bd2", forHTTPHeaderField: "Authorization")
+        
+        let (data, response) = try await URLSession.shared.data(for: request)
+        
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw URLError(.badServerResponse)
+        }
+        
+        guard httpResponse.statusCode == 200 else {
+            throw URLError(.badServerResponse)
+        }
+        
+        return String(data: data, encoding: .utf8) ?? "No response body"
+    }
 }
