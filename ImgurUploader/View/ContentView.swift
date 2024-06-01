@@ -76,7 +76,7 @@ struct ContentView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink(destination: ListView()) {
                         if showingToolbar {
-                            Text("Uploaded Images")
+                            Image(systemName: "photo.stack.fill")
                         }
                     }
                 }
