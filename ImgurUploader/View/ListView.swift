@@ -46,6 +46,10 @@ struct ListView: View {
                             .textSelection(.enabled)
                             .font(.caption)
                             .foregroundColor(.blue)
+                            .swipeActions {
+                                Button("Delete", systemImage: "trash", role: .destructive) {
+                                    modelContext.delete(image)
+                                    // API経由でも削除する
                                 }
                             }
                         
