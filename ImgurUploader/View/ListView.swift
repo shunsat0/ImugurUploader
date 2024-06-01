@@ -6,63 +6,75 @@
 //
 
 import SwiftUI
-
-struct EditableTextView: UIViewRepresentable {
-    var text: String
-    
-    func makeUIView(context: Context) -> UITextView {
-        let textView = UITextView()
-        textView.text = text
-        textView.isEditable = false
-        textView.isSelectable = true
-        textView.dataDetectorTypes = .all
-        textView.backgroundColor = UIColor.clear
-        return textView
-    }
-    
-    func updateUIView(_ uiView: UITextView, context: Context) {
-        uiView.text = text
-    }
-}
+import SwiftData
 
 struct ListView: View {
     @Environment(\.dismiss) var dismiss
+    @Environment(\.modelContext) private var modelContext
+    @Query private var images: [ImageData]
+    @StateObject private var viewModel = ImgurDataViewModel()
     
     var body: some View {
-        VStack {
-            List {
-                Section(header: Text("Uploaded Images")) {
-                    ForEach(photoArray.indices, id: \.self) { index in
-                        let item = photoArray[index]
-                        
-                        if let imageUrl = URL(string: item) {
-                            HStack {
-                                AsyncImage(url: imageUrl) { phase in
-                                    switch phase {
-                                    case .success(let image):
-                                        image.resizable()
-                                            .aspectRatio(contentMode: .fill)
-                                            .frame(width: 60, height: 60)
-                                    case .failure:
-                                        Image(systemName: "photo")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fill)
-                                            .frame(width: 60, height: 60)
-                                    case .empty:
-                                        ProgressView()
-                                    @unknown default:
-                                        EmptyView()
+        List {
+            ForEach(images, id: \.self) { image in
+                let imageUrl = image.url
+                
+                HStack {
+                    if let imageUrl = URL(string: imageUrl) {
+                        AsyncImage(url: imageUrl) { phase in
+                            switch phase {
+                            case .success(let image):
+                                image.resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 60, height: 60)
+                            case .failure:
+                                Image(systemName: "photo")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 60, height: 60)
+                            case .empty:
+                                ProgressView()
+                            @unknown default:
+                                EmptyView()
+                            }
+                        }
+                        .frame(width: 100, height: 100)
+                        .cornerRadius(10)
+                    }
+                    
+                    VStack(alignment: .leading) {
+                        Text(image.url)
+                            .textSelection(.enabled)
+                            .font(.caption)
+                            .foregroundColor(.blue)
+                            .swipeActions {
+                                Button("Delete", systemImage: "trash", role: .destructive) {
+                                    modelContext.delete(image)
+                                    // API経由でも削除する
+                                    Task {
+                                        do {
+                                            let response = try await viewModel.delete(hashcode: image.deletehas)
+                                            print("Response: \(response)")
+                                        } catch {
+                                            print("Error: \(error)")
+                                        }
                                     }
                                 }
-                                .frame(width: 100, height: 100)
-                                .cornerRadius(10)
-                                
-                                EditableTextView(text: item)                           }
+                            }
+                        
+                        HStack {
+                            Text("(Delete Code)")
+                            
+                            Text(image.deletehas)
+                                .textSelection(.enabled)
                         }
+                        .font(.caption2)
+                        .foregroundColor(.gray)
                     }
                 }
             }
         }
+        
     }
     
 }
