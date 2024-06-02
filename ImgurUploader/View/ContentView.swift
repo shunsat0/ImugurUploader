@@ -110,15 +110,6 @@ struct ContentView: View {
                     }
                 }
             }
-            .alert(isPresented: $showingAlert) {
-                UIPasteboard.general.string = pasteString
-                
-                return Alert(
-                    title: Text("Image Uploaded!"),
-                    message: Text("The URL has been copied to the clipboard."),
-                    dismissButton: .default(Text("OK"))
-                )
-            }
             .sheet(isPresented: $viewModel.isShowSheet,onDismiss: {
                 image = nil
                 showingToolbar = true
