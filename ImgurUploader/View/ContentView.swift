@@ -116,22 +116,28 @@ struct ContentView: View {
                 modelContext.insert(newData)
             }){
                 NavigationView {
-                    Text("\(viewModel.postedImageData!.data.link)")
-                        .textSelection(.enabled)
-                        .font(.headline)
-                        .foregroundColor(.blue)
-                        .toolbar {
-                            ToolbarItem {
-                                Button(action: {
-                                    viewModel.isShowSheet = false
-                                    isSelected = false
-                                    isLoading = false
-                                }, label: {
-                                    Image(systemName: "xmark.circle.fill")
-                                        .foregroundColor(.gray)
-                                })
+                    VStack {
+                        Text("Success! Copy URL👍")
+                            .foregroundStyle(.green)
+                            .padding()
+                        
+                        Text("\(viewModel.postedImageData!.data.link)")
+                            .textSelection(.enabled)
+                            .font(.title)
+                            .foregroundStyle(.blue)
+                            .toolbar {
+                                ToolbarItem {
+                                    Button(action: {
+                                        viewModel.isShowSheet = false
+                                        isSelected = false
+                                        isLoading = false
+                                    }, label: {
+                                        Image(systemName: "xmark.circle.fill")
+                                            .foregroundColor(.gray)
+                                    })
+                                }
                             }
-                        }
+                    }
                 }
                 
             }
