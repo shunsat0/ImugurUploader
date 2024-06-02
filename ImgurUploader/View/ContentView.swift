@@ -16,6 +16,7 @@ struct ContentView: View {
     @State var image: UIImage?
     @State var isSelected: Bool = false
     @StateObject private var viewModel = ImgurDataViewModel()
+    @State private var isLoading:Bool = false
     
     @Environment(\.modelContext) private var modelContext
     
@@ -33,44 +34,67 @@ struct ContentView: View {
                     }
                     
                     if(viewModel.isUploading) {
-                        ProgressView()
-                            .scaleEffect(2.0)
+                        VStack {
+                            ProgressView()
+                                .scaleEffect(2.0)
+                                .padding()
+                            
+                            Text("Uploading...")
+                                .foregroundStyle(.gray)
+                                .bold()
+                        }
                     }
                     
                 }
                 
-                
-                PhotosPicker(selection: $selectedItem, matching: .images) {
-                    Label(
-                        title: { Text("Pick a Photo") },
-                        icon: { Image(systemName: "photo") }
-                    )
-                }
-                .onChange(of: selectedItem) {
-                    showingToolbar = false
-                    Task {
-                        guard let imageData = try await selectedItem?.loadTransferable(type: Data.self) else { return }
-                        guard let uiImage = UIImage(data: imageData) else { return }
-                        image = uiImage
-                        isSelected = true
-                    }
-                }
-                
-                Button(action: {
-                    Task {
-                        await viewModel.postImage(image: image!)
-                    }
+                if(!isSelected && !viewModel.isUploading) {
                     
-                }, label: {
-                    Text("Start Upload")
+                    PhotosPicker(selection: $selectedItem, matching: .images) {
+                        Label(
+                            title: { Text("Pick a Photo") },
+                            icon: { Image(systemName: "photo") }
+                        )
+                    }
+                    .onChange(of: selectedItem) {
+                        showingToolbar = false
+                        Task {
+                            guard let imageData = try await selectedItem?.loadTransferable(type: Data.self) else { return }
+                            guard let uiImage = UIImage(data: imageData) else { return }
+                            image = uiImage
+                            isSelected = true
+                        }
+                    }
+                }
+                
+                if(isSelected && !viewModel.isUploading) {
+                    HStack {
+                        Button(action: {
+                            Task {
+                                await viewModel.postImage(image: image!)
+                            }
+                            
+                        }, label: {
+                            Text("Start Upload")
+                                .padding(5)
+                                .background(isSelected ? .green : .gray)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                        })
+                        .disabled(!isSelected)
+                        
+                        Button("Cancel") {
+                            image = nil
+                            isSelected.toggle()
+                            showingToolbar.toggle()
+                        }
                         .padding(5)
-                        .background(isSelected ? .blue : .gray)
+                        .background(.red)
                         .foregroundColor(.white)
                         .cornerRadius(10)
-                })
-                .disabled(!isSelected)
-                
-                
+                        
+                    }
+                    .padding()
+                }
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -90,37 +114,38 @@ struct ContentView: View {
                     }
                 }
             }
-            .alert(isPresented: $showingAlert) {
-                UIPasteboard.general.string = pasteString
-                
-                return Alert(
-                    title: Text("Image Uploaded!"),
-                    message: Text("The URL has been copied to the clipboard."),
-                    dismissButton: .default(Text("OK"))
-                )
-            }
             .sheet(isPresented: $viewModel.isShowSheet,onDismiss: {
                 image = nil
                 showingToolbar = true
+                viewModel.isShowSheet = false
+                isSelected = false
                 
                 /// データ永続化
                 let newData = ImageData(url: viewModel.postedImageData!.data.link, deletehas: viewModel.postedImageData!.data.deletehash)
                 modelContext.insert(newData)
             }){
                 NavigationView {
-                    Text("\(viewModel.postedImageData!.data.link)")
-                        .textSelection(.enabled)
-                        .font(.headline)
-                        .foregroundColor(.blue)
-                        .toolbar {
-                            ToolbarItem {
-                                Button(action: {
-                                    viewModel.isShowSheet = false
-                                }, label: {
-                                    Text("close")
-                                })
+                    VStack {
+                        Text("Success! Copy URL👍")
+                            .foregroundStyle(.green)
+                            .padding()
+                        
+                        Text("\(viewModel.postedImageData!.data.link)")
+                            .textSelection(.enabled)
+                            .font(.title)
+                            .foregroundStyle(.blue)
+                            .toolbar {
+                                ToolbarItem {
+                                    Button(action: {
+                                        viewModel.isShowSheet = false
+                                        isSelected = false
+                                    }, label: {
+                                        Image(systemName: "xmark.circle.fill")
+                                            .foregroundColor(.gray)
+                                    })
+                                }
                             }
-                        }
+                    }
                 }
                 
             }
