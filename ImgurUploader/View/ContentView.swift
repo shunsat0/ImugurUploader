@@ -40,7 +40,7 @@ struct ContentView: View {
                     
                 }
                 
-                if(!isSelected && !isLoading) {
+                if(!isSelected && !viewModel.isUploading) {
                     
                     PhotosPicker(selection: $selectedItem, matching: .images) {
                         Label(
@@ -59,12 +59,10 @@ struct ContentView: View {
                     }
                 }
                 
-                if(isSelected && !isLoading) {
-                    
+                if(isSelected && !viewModel.isUploading) {
                     HStack {
                         Button(action: {
                             Task {
-                                isLoading = true
                                 await viewModel.postImage(image: image!)
                             }
                             
@@ -90,7 +88,6 @@ struct ContentView: View {
                     }
                     .padding()
                 }
-                
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
