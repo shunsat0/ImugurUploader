@@ -34,8 +34,15 @@ struct ContentView: View {
                     }
                     
                     if(viewModel.isUploading) {
-                        ProgressView()
-                            .scaleEffect(2.0)
+                        VStack {
+                            ProgressView()
+                                .scaleEffect(2.0)
+                                .padding()
+                            
+                            Text("Uploading...")
+                                .foregroundStyle(.gray)
+                                .bold()
+                        }
                     }
                     
                 }
