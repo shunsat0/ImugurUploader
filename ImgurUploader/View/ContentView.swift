@@ -117,6 +117,8 @@ struct ContentView: View {
             .sheet(isPresented: $viewModel.isShowSheet,onDismiss: {
                 image = nil
                 showingToolbar = true
+                viewModel.isShowSheet = false
+                isSelected = false
                 
                 /// データ永続化
                 let newData = ImageData(url: viewModel.postedImageData!.data.link, deletehas: viewModel.postedImageData!.data.deletehash)
@@ -137,7 +139,6 @@ struct ContentView: View {
                                     Button(action: {
                                         viewModel.isShowSheet = false
                                         isSelected = false
-                                        isLoading = false
                                     }, label: {
                                         Image(systemName: "xmark.circle.fill")
                                             .foregroundColor(.gray)
