@@ -16,6 +16,7 @@ struct ContentView: View {
     @State var image: UIImage?
     @State var isSelected: Bool = false
     @StateObject private var viewModel = ImgurDataViewModel()
+    @State private var isLoading:Bool = false
     
     @Environment(\.modelContext) private var modelContext
     
@@ -39,37 +40,56 @@ struct ContentView: View {
                     
                 }
                 
-                
-                PhotosPicker(selection: $selectedItem, matching: .images) {
-                    Label(
-                        title: { Text("Pick a Photo") },
-                        icon: { Image(systemName: "photo") }
-                    )
-                }
-                .onChange(of: selectedItem) {
-                    showingToolbar = false
-                    Task {
-                        guard let imageData = try await selectedItem?.loadTransferable(type: Data.self) else { return }
-                        guard let uiImage = UIImage(data: imageData) else { return }
-                        image = uiImage
-                        isSelected = true
-                    }
-                }
-                
-                Button(action: {
-                    Task {
-                        await viewModel.postImage(image: image!)
-                    }
+                if(!isSelected && !isLoading) {
                     
-                }, label: {
-                    Text("Start Upload")
+                    PhotosPicker(selection: $selectedItem, matching: .images) {
+                        Label(
+                            title: { Text("Pick a Photo") },
+                            icon: { Image(systemName: "photo") }
+                        )
+                    }
+                    .onChange(of: selectedItem) {
+                        showingToolbar = false
+                        Task {
+                            guard let imageData = try await selectedItem?.loadTransferable(type: Data.self) else { return }
+                            guard let uiImage = UIImage(data: imageData) else { return }
+                            image = uiImage
+                            isSelected = true
+                        }
+                    }
+                }
+                
+                if(isSelected && !isLoading) {
+                    
+                    HStack {
+                        Button(action: {
+                            Task {
+                                isLoading = true
+                                await viewModel.postImage(image: image!)
+                            }
+                            
+                        }, label: {
+                            Text("Start Upload")
+                                .padding(5)
+                                .background(isSelected ? .green : .gray)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                        })
+                        .disabled(!isSelected)
+                        
+                        Button("Cancel") {
+                            image = nil
+                            isSelected.toggle()
+                            showingToolbar.toggle()
+                        }
                         .padding(5)
-                        .background(isSelected ? .blue : .gray)
+                        .background(.red)
                         .foregroundColor(.white)
                         .cornerRadius(10)
-                })
-                .disabled(!isSelected)
-                
+                        
+                    }
+                    .padding()
+                }
                 
             }
             .toolbar {
@@ -116,8 +136,11 @@ struct ContentView: View {
                             ToolbarItem {
                                 Button(action: {
                                     viewModel.isShowSheet = false
+                                    isSelected = false
+                                    isLoading = false
                                 }, label: {
-                                    Text("close")
+                                    Image(systemName: "xmark.circle.fill")
+                                        .foregroundColor(.gray)
                                 })
                             }
                         }
