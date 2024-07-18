@@ -1,2 +1,3 @@
 .DS_Store
 ImgurUploader.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved
+*.xcuserstate
