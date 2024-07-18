@@ -24,6 +24,7 @@ struct ContentView: View {
         
         NavigationStack {
             VStack {
+                Spacer()
                 
                 ZStack {
                     if let image {
@@ -95,6 +96,10 @@ struct ContentView: View {
                     }
                     .padding()
                 }
+                
+                Spacer()
+                
+                BannerAd()
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
