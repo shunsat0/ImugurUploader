@@ -23,8 +23,8 @@ struct ContentView: View {
     var body: some View {
         
         NavigationStack {
+            
             VStack {
-                
                 ZStack {
                     if let image {
                         Image(uiImage: image)
@@ -46,6 +46,8 @@ struct ContentView: View {
                     }
                     
                 }
+                
+                Spacer()
                 
                 if(!isSelected && !viewModel.isUploading) {
                     
@@ -95,6 +97,11 @@ struct ContentView: View {
                     }
                     .padding()
                 }
+                
+                
+                Spacer()
+                
+                BannerAd()
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
