@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		240396112C49640B00E41F35 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240396102C49640B00E41F35 /* BannerView.swift */; };
 		24328E362C01E61E00AC3430 /* ImgurDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24328E352C01E61E00AC3430 /* ImgurDataModel.swift */; };
 		24339B3B2C0C5BAB00AA81E5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 24339B3A2C0C5BAB00AA81E5 /* Alamofire */; };
 		2442EEA32B4ABB7300ECDE60 /* ImgurUploaderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2442EEA22B4ABB7300ECDE60 /* ImgurUploaderApp.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		240396102C49640B00E41F35 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
 		24328E352C01E61E00AC3430 /* ImgurDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgurDataModel.swift; sourceTree = "<group>"; };
 		2442EE9F2B4ABB7300ECDE60 /* ImgurUploader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImgurUploader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2442EEA22B4ABB7300ECDE60 /* ImgurUploaderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgurUploaderApp.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				24A5D33C2B4C019500CA8D89 /* InfoView.swift */,
 				24A5D3362B4BD73300CA8D89 /* ListView.swift */,
 				2442EEA42B4ABB7300ECDE60 /* ContentView.swift */,
+				240396102C49640B00E41F35 /* BannerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				24A5D3392B4BD91A00CA8D89 /* PhotoData.swift in Sources */,
 				24A5D33D2B4C019500CA8D89 /* InfoView.swift in Sources */,
 				24328E362C01E61E00AC3430 /* ImgurDataModel.swift in Sources */,
+				240396112C49640B00E41F35 /* BannerView.swift in Sources */,
 				24A5D3372B4BD73300CA8D89 /* ListView.swift in Sources */,
 				24AF264E2BFA485E00578A16 /* ImgurService.swift in Sources */,
 				24F894AF2C0B1D7B00DCE4FD /* Data.swift in Sources */,
