@@ -8,6 +8,7 @@
 import Foundation
 import GoogleMobileAds
 import UIKit
+import SwiftUI
 
 class ViewController: UIViewController {
     
@@ -56,4 +57,28 @@ class ViewController: UIViewController {
             ])
     }
     
+}
+
+
+struct GADBannerViewController: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> UIViewController {
+        let view = GADBannerView(adSize: GADAdSizeBanner)
+        let viewController = UIViewController()
+        view.adUnitID = "ca-app-pub-8467408220599556/9696487342"
+        view.rootViewController = viewController
+        viewController.view.addSubview(view)
+        viewController.view.frame = CGRect(origin: .zero, size: GADAdSizeBanner.size)
+        view.load(GADRequest())
+        return viewController
+    }
+
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
+}
+
+
+struct BannerAd: View {
+    var body: some View {
+        GADBannerViewController()
+            .frame(width: GADAdSizeBanner.size.width, height: GADAdSizeBanner.size.height)
+    }
 }
