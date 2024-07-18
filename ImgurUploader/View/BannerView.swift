@@ -2,7 +2,7 @@
 //  BannerView.swift
 //  ImgurUploader
 //
-//  Created by Shun Sato on 2024/07/18.
+//  Created by Shun Sato on 2024/07/19.
 //
 
 import Foundation

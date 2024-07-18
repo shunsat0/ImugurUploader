@@ -20,6 +20,10 @@
 		24A5D3392B4BD91A00CA8D89 /* PhotoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A5D3382B4BD91A00CA8D89 /* PhotoData.swift */; };
 		24A5D33D2B4C019500CA8D89 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A5D33C2B4C019500CA8D89 /* InfoView.swift */; };
 		24AF264E2BFA485E00578A16 /* ImgurService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AF264D2BFA485E00578A16 /* ImgurService.swift */; };
+		24B72A062C49A1E6007D68AC /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 24B72A052C49A1E6007D68AC /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		24B72A082C49A234007D68AC /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B72A072C49A234007D68AC /* BannerView.swift */; };
+		24B72A0B2C49A331007D68AC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24B72A0A2C49A330007D68AC /* GoogleService-Info.plist */; };
+		24B72A0E2C49A450007D68AC /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 24B72A0D2C49A450007D68AC /* GoogleMobileAds */; };
 		24F894AF2C0B1D7B00DCE4FD /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F894AE2C0B1D7B00DCE4FD /* Data.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +60,9 @@
 		24A5D3382B4BD91A00CA8D89 /* PhotoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoData.swift; sourceTree = "<group>"; };
 		24A5D33C2B4C019500CA8D89 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		24AF264D2BFA485E00578A16 /* ImgurService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgurService.swift; sourceTree = "<group>"; };
+		24B72A072C49A234007D68AC /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
+		24B72A092C49A271007D68AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24B72A0A2C49A330007D68AC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		24F894AE2C0B1D7B00DCE4FD /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -64,7 +71,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24B72A0E2C49A450007D68AC /* GoogleMobileAds in Frameworks */,
 				24339B3E2C0C841F00AA81E5 /* Alamofire in Frameworks */,
+				24B72A062C49A1E6007D68AC /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,6 +126,8 @@
 		2442EEA12B4ABB7300ECDE60 /* ImgurUploader */ = {
 			isa = PBXGroup;
 			children = (
+				24B72A0A2C49A330007D68AC /* GoogleService-Info.plist */,
+				24B72A092C49A271007D68AC /* Info.plist */,
 				2442EEA22B4ABB7300ECDE60 /* ImgurUploaderApp.swift */,
 				24328E342C01E5E900AC3430 /* Model */,
 				24AF264C2BFA482B00578A16 /* ViewModel */,
@@ -158,6 +169,7 @@
 				24A5D33C2B4C019500CA8D89 /* InfoView.swift */,
 				24A5D3362B4BD73300CA8D89 /* ListView.swift */,
 				2442EEA42B4ABB7300ECDE60 /* ContentView.swift */,
+				24B72A072C49A234007D68AC /* BannerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -189,6 +201,8 @@
 			name = ImgurUploader;
 			packageProductDependencies = (
 				24339B3D2C0C841F00AA81E5 /* Alamofire */,
+				24B72A052C49A1E6007D68AC /* FirebaseAnalyticsWithoutAdIdSupport */,
+				24B72A0D2C49A450007D68AC /* GoogleMobileAds */,
 			);
 			productName = ImgurUploader;
 			productReference = 2442EE9F2B4ABB7300ECDE60 /* ImgurUploader.app */;
@@ -264,6 +278,8 @@
 			mainGroup = 2442EE962B4ABB7300ECDE60;
 			packageReferences = (
 				24339B3C2C0C841F00AA81E5 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				24B72A042C49A1E6007D68AC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				24B72A0C2C49A450007D68AC /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 			);
 			productRefGroup = 2442EEA02B4ABB7300ECDE60 /* Products */;
 			projectDirPath = "";
@@ -283,6 +299,7 @@
 			files = (
 				2442EEAA2B4ABB7400ECDE60 /* Preview Assets.xcassets in Resources */,
 				2442EEA72B4ABB7400ECDE60 /* Assets.xcassets in Resources */,
+				24B72A0B2C49A331007D68AC /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +329,7 @@
 				24A5D3392B4BD91A00CA8D89 /* PhotoData.swift in Sources */,
 				24A5D33D2B4C019500CA8D89 /* InfoView.swift in Sources */,
 				24328E362C01E61E00AC3430 /* ImgurDataModel.swift in Sources */,
+				24B72A082C49A234007D68AC /* BannerView.swift in Sources */,
 				24A5D3372B4BD73300CA8D89 /* ListView.swift in Sources */,
 				24AF264E2BFA485E00578A16 /* ImgurService.swift in Sources */,
 				24F894AF2C0B1D7B00DCE4FD /* Data.swift in Sources */,
@@ -481,6 +499,7 @@
 				DEVELOPMENT_TEAM = WB32WK7B28;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ImgurUploader/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -514,6 +533,7 @@
 				DEVELOPMENT_TEAM = WB32WK7B28;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ImgurUploader/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -662,6 +682,22 @@
 				minimumVersion = 5.9.1;
 			};
 		};
+		24B72A042C49A1E6007D68AC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.29.0;
+			};
+		};
+		24B72A0C2C49A450007D68AC /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.7.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -669,6 +705,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 24339B3C2C0C841F00AA81E5 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		24B72A052C49A1E6007D68AC /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 24B72A042C49A1E6007D68AC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		24B72A0D2C49A450007D68AC /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 24B72A0C2C49A450007D68AC /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
