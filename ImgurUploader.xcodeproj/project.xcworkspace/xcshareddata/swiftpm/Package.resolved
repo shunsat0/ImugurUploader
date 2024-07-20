@@ -1,5 +1,5 @@
 {
-  "originHash" : "c91d110edc581a1a1ff0cc3b5264d89fa0715fa271f3e204c9fdc9d39e5e01c0",
+  "originHash" : "dded23e12237f0107e7436fa168f67ecd69d827572a80f0fc20c7772663f3f32",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -143,6 +143,15 @@
       "state" : {
         "revision" : "d57a5aecf24a25b32ec4a74be2f5d0a995a47c4b",
         "version" : "1.27.0"
+      }
+    },
+    {
+      "identity" : "webui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/cybozu/WebUI.git",
+      "state" : {
+        "revision" : "4708709d7c33c84b102eea73d91bd8baea49640b",
+        "version" : "2.1.0"
       }
     }
   ],
