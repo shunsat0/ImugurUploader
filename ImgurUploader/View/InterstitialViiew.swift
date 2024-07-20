@@ -20,7 +20,7 @@ class InterstitialAd: NSObject, ObservableObject {
         Task {
             do {
                 interstitial = try await GADInterstitialAd.load(
-                    withAdUnitID: "ca-app-pub-3940256099942544/4411468910",
+                    withAdUnitID: "ca-app-pub-8467408220599556/2206786234",
                     request: GADRequest()
                 )
                 print("Interstitial ad loaded successfully")
