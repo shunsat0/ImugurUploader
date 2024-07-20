@@ -6,9 +6,49 @@
 //
 
 import SwiftUI
+import WebUI
 
 struct InfoView: View {
-    
+    var body: some View {
+        
+        List {
+            NavigationLink(
+                destination: TutorialView(),
+                label: {
+                    HStack {
+                        Image(systemName: "hand.raised.fingers.spread")
+                            .foregroundColor(.accentColor)
+                        Text("Tutorial")
+                    }
+                }
+            )
+            
+            NavigationLink(
+                destination: WebView(request: URLRequest(url: URL(string: "https://youten410.app/privacy-policy/imgur/terms.html")!)),
+                label: {
+                    HStack {
+                        Image(systemName: "info.circle")
+                            .foregroundColor(.accentColor)
+                        Text("Terms Of Service")
+                    }
+                }
+            )
+            
+            NavigationLink(
+                destination: WebView(request: URLRequest(url: URL(string: "https://youten410.app/privacy-policy/imgur/policy.html")!)),
+                label: {
+                    HStack {
+                        Image(systemName: "info.circle")
+                            .foregroundColor(.accentColor)
+                        Text("Privacy Policy")
+                    }
+                }
+            )
+        }
+    }
+}
+
+struct TutorialView: View {
     var body: some View {
         TabView {
             ForEach(1...10, id: \.self) { item in
