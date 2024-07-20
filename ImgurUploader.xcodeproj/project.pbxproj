@@ -16,6 +16,7 @@
 		2442EEB42B4ABB7400ECDE60 /* ImgurUploaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2442EEB32B4ABB7400ECDE60 /* ImgurUploaderTests.swift */; };
 		2442EEBE2B4ABB7400ECDE60 /* ImgurUploaderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2442EEBD2B4ABB7400ECDE60 /* ImgurUploaderUITests.swift */; };
 		2442EEC02B4ABB7400ECDE60 /* ImgurUploaderUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2442EEBF2B4ABB7400ECDE60 /* ImgurUploaderUITestsLaunchTests.swift */; };
+		248977B02C4BAA68009420B1 /* InterstitialViiew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248977AF2C4BAA68009420B1 /* InterstitialViiew.swift */; };
 		24A5D3372B4BD73300CA8D89 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A5D3362B4BD73300CA8D89 /* ListView.swift */; };
 		24A5D3392B4BD91A00CA8D89 /* PhotoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A5D3382B4BD91A00CA8D89 /* PhotoData.swift */; };
 		24A5D33D2B4C019500CA8D89 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A5D33C2B4C019500CA8D89 /* InfoView.swift */; };
@@ -57,6 +58,7 @@
 		2442EEB92B4ABB7400ECDE60 /* ImgurUploaderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImgurUploaderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2442EEBD2B4ABB7400ECDE60 /* ImgurUploaderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgurUploaderUITests.swift; sourceTree = "<group>"; };
 		2442EEBF2B4ABB7400ECDE60 /* ImgurUploaderUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgurUploaderUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		248977AF2C4BAA68009420B1 /* InterstitialViiew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterstitialViiew.swift; sourceTree = "<group>"; };
 		24A5D3362B4BD73300CA8D89 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		24A5D3382B4BD91A00CA8D89 /* PhotoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoData.swift; sourceTree = "<group>"; };
 		24A5D33C2B4C019500CA8D89 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				24A5D3362B4BD73300CA8D89 /* ListView.swift */,
 				2442EEA42B4ABB7300ECDE60 /* ContentView.swift */,
 				24B72A072C49A234007D68AC /* BannerView.swift */,
+				248977AF2C4BAA68009420B1 /* InterstitialViiew.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				24A5D33D2B4C019500CA8D89 /* InfoView.swift in Sources */,
 				24328E362C01E61E00AC3430 /* ImgurDataModel.swift in Sources */,
 				24B72A082C49A234007D68AC /* BannerView.swift in Sources */,
+				248977B02C4BAA68009420B1 /* InterstitialViiew.swift in Sources */,
 				24A5D3372B4BD73300CA8D89 /* ListView.swift in Sources */,
 				24AF264E2BFA485E00578A16 /* ImgurService.swift in Sources */,
 				24F894AF2C0B1D7B00DCE4FD /* Data.swift in Sources */,

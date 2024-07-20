@@ -20,6 +20,8 @@ struct ContentView: View {
     
     @Environment(\.modelContext) private var modelContext
     
+    @State private var showAd: Bool = false
+    
     var body: some View {
         
         NavigationStack {
@@ -119,11 +121,13 @@ struct ContentView: View {
                     }
                 }
             }
+            .interstitialAd(isPresented: $showAd)
             .sheet(isPresented: $viewModel.isShowSheet,onDismiss: {
                 image = nil
                 showingToolbar = true
                 viewModel.isShowSheet = false
                 isSelected = false
+                showAd = true
                 
                 /// データ永続化
                 let newData = ImageData(url: viewModel.postedImageData!.data.link, deletehas: viewModel.postedImageData!.data.deletehash)
