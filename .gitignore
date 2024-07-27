@@ -3,3 +3,4 @@
 *.resolved
 GoogleService-Info.plist
 *.resolved
+*.plist
