@@ -1,6 +1,4 @@
 .DS_Store
 *.xcuserstate
 *.resolved
-GoogleService-Info.plist
 *.resolved
-*.plist
