@@ -4,12 +4,11 @@
 //
 //  Created by Shun Sato on 2024/05/19.
 //
-
 import Foundation
 import Alamofire
 import SwiftUI
 import Combine
-
+import FirebaseCrashlytics
 
 final class ImgurDataViewModel: ObservableObject {
     
@@ -24,12 +23,18 @@ final class ImgurDataViewModel: ObservableObject {
         
         guard let imageData = image.jpegData(compressionQuality: 1.0) else {
             print("Failed to convert image to data")
+            Crashlytics.crashlytics().setCustomValue("Failed to convert image to data", forKey: "ImageUploadError")
             return
         }
         
         let headers: HTTPHeaders = [
             "Authorization": "Client-ID \(clientId)"
         ]
+        
+        // アップロード開始時のログ
+        Crashlytics.crashlytics().log("Starting image upload")
+        Crashlytics.crashlytics().setCustomValue(url, forKey: "UploadURL")
+        Crashlytics.crashlytics().setCustomValue(imageData.count, forKey: "ImageSizeBytes")
         
         DispatchQueue.main.async {
             self.isUploading = true
@@ -48,7 +53,10 @@ final class ImgurDataViewModel: ObservableObject {
                 self.isShowSheet = true
             }
 
-            guard let data  = response.data else { return }
+            guard let data = response.data else {
+                Crashlytics.crashlytics().setCustomValue("No response data", forKey: "ImageUploadError")
+                return
+            }
             
             do {
                 let imgurDataModel: ImgurDataModel = try JSONDecoder().decode(ImgurDataModel.self, from: data)
@@ -58,6 +66,11 @@ final class ImgurDataViewModel: ObservableObject {
                 print(link)
                 print(deletehash)
                 
+                // アップロード成功時のログ
+                Crashlytics.crashlytics().log("Image upload successful")
+                Crashlytics.crashlytics().setCustomValue(link, forKey: "UploadedImageLink")
+                Crashlytics.crashlytics().setCustomValue(deletehash, forKey: "DeleteHash")
+                
                 let model = ImgurDataModel(data: DataInfoModel(link: link, deletehash: deletehash))
                 
                 DispatchQueue.main.async {
@@ -66,11 +79,18 @@ final class ImgurDataViewModel: ObservableObject {
                                             
             } catch {
                 print("Failed to decode response: \(error)")
+                // デコードエラー時のログ
+                Crashlytics.crashlytics().setCustomValue("Failed to decode response", forKey: "ImageUploadError")
+                Crashlytics.crashlytics().record(error: error)
             }
         }
     }
     
     func delete(hashcode: String) async throws -> String {
+        // 削除処理開始時のログ
+        Crashlytics.crashlytics().log("Starting image delete")
+        Crashlytics.crashlytics().setCustomValue(hashcode, forKey: "DeleteHashcode")
+
         let url = URL(string: "https://api.imgur.com/3/image/\(hashcode)")!
         
         var request = URLRequest(url: url)
@@ -80,12 +100,17 @@ final class ImgurDataViewModel: ObservableObject {
         let (data, response) = try await URLSession.shared.data(for: request)
         
         guard let httpResponse = response as? HTTPURLResponse else {
+            Crashlytics.crashlytics().setCustomValue("Bad server response", forKey: "ImageDeleteError")
             throw URLError(.badServerResponse)
         }
         
         guard httpResponse.statusCode == 200 else {
+            Crashlytics.crashlytics().setCustomValue("HTTP status: \(httpResponse.statusCode)", forKey: "ImageDeleteError")
             throw URLError(.badServerResponse)
         }
+        
+        // 削除成功時のログ
+        Crashlytics.crashlytics().log("Image delete successful")
         
         return String(data: data, encoding: .utf8) ?? "No response body"
     }
