@@ -82,3 +82,7 @@ struct BannerAd: View {
             .frame(width: GADAdSizeBanner.size.width, height: GADAdSizeBanner.size.height)
     }
 }
+
+#Preview {
+    BannerAd()
+}
