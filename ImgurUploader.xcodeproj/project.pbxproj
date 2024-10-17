@@ -26,6 +26,7 @@
 		24B72A0E2C49A450007D68AC /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 24B72A0D2C49A450007D68AC /* GoogleMobileAds */; };
 		24B86D052C4B9C1B0036E4FE /* WebUI in Frameworks */ = {isa = PBXBuildFile; productRef = 24B86D042C4B9C1B0036E4FE /* WebUI */; };
 		24F894AF2C0B1D7B00DCE4FD /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F894AE2C0B1D7B00DCE4FD /* Data.swift */; };
+		B11B06A22CC183D100A96B89 /* SwiftyDropbox in Frameworks */ = {isa = PBXBuildFile; productRef = B11B06A12CC183D100A96B89 /* SwiftyDropbox */; };
 		B12E70DF2C635CDE00531340 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B12E70DE2C635CDE00531340 /* GoogleService-Info.plist */; };
 		B1BC79B12CAACA0F005798C6 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = B1BC79B02CAACA0F005798C6 /* FirebaseCrashlytics */; };
 /* End PBXBuildFile section */
@@ -80,6 +81,7 @@
 				B1BC79B12CAACA0F005798C6 /* FirebaseCrashlytics in Frameworks */,
 				24339B3E2C0C841F00AA81E5 /* Alamofire in Frameworks */,
 				24B72A062C49A1E6007D68AC /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+				B11B06A22CC183D100A96B89 /* SwiftyDropbox in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,6 +215,7 @@
 				24B72A0D2C49A450007D68AC /* GoogleMobileAds */,
 				24B86D042C4B9C1B0036E4FE /* WebUI */,
 				B1BC79B02CAACA0F005798C6 /* FirebaseCrashlytics */,
+				B11B06A12CC183D100A96B89 /* SwiftyDropbox */,
 			);
 			productName = ImgurUploader;
 			productReference = 2442EE9F2B4ABB7300ECDE60 /* ImgurUploader.app */;
@@ -291,6 +294,7 @@
 				24B72A042C49A1E6007D68AC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				24B72A0C2C49A450007D68AC /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 				24B86D032C4B9C1B0036E4FE /* XCRemoteSwiftPackageReference "WebUI" */,
+				B11B06A02CC183D100A96B89 /* XCRemoteSwiftPackageReference "SwiftyDropbox" */,
 			);
 			productRefGroup = 2442EEA02B4ABB7300ECDE60 /* Products */;
 			projectDirPath = "";
@@ -744,6 +748,14 @@
 				minimumVersion = 2.1.0;
 			};
 		};
+		B11B06A02CC183D100A96B89 /* XCRemoteSwiftPackageReference "SwiftyDropbox" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dropbox/SwiftyDropbox.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -766,6 +778,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 24B86D032C4B9C1B0036E4FE /* XCRemoteSwiftPackageReference "WebUI" */;
 			productName = WebUI;
+		};
+		B11B06A12CC183D100A96B89 /* SwiftyDropbox */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B11B06A02CC183D100A96B89 /* XCRemoteSwiftPackageReference "SwiftyDropbox" */;
+			productName = SwiftyDropbox;
 		};
 		B1BC79B02CAACA0F005798C6 /* FirebaseCrashlytics */ = {
 			isa = XCSwiftPackageProductDependency;
