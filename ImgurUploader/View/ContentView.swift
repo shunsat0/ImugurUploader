@@ -51,21 +51,36 @@ struct ContentView: View {
                 }
                 
                 if(!isSelected && !viewModel.isUploading) {
-                    
-                    PhotosPicker(selection: $selectedItem, matching: .images) {
-                        Label(
-                            title: { Text("Pick a Photo") },
-                            icon: { Image(systemName: "photo") }
-                        )
-                    }
-                    .onChange(of: selectedItem) {
-                        showingToolbar = false
-                        Task {
-                            guard let imageData = try await selectedItem?.loadTransferable(type: Data.self) else { return }
-                            guard let uiImage = UIImage(data: imageData) else { return }
-                            image = uiImage
-                            isSelected = true
+                    VStack {
+                        PhotosPicker(selection: $selectedItem, matching: .images) {
+                            Label(
+                                title: { Text("Pick a Photo") },
+                                icon: { Image(systemName: "photo") }
+                            )
+                            .font(.title)
                         }
+                        .onChange(of: selectedItem) {
+                            showingToolbar = false
+                            Task {
+                                guard let imageData = try await selectedItem?.loadTransferable(type: Data.self) else { return }
+                                guard let uiImage = UIImage(data: imageData) else { return }
+                                image = uiImage
+                                isSelected = true
+                            }
+                        }
+                        .padding()
+                        
+                        Button(action: {
+                            // Dropboxを開く
+                            
+                        }, label: {
+                            Label(
+                                title: { Text("Dropbox") },
+                                icon: { Image(systemName: "cloud.fill") }
+                            )
+                            .font(.title)
+                        })
+                        .padding()
                     }
                 }
                 
