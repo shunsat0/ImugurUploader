@@ -16,7 +16,8 @@ struct ContentView: View {
     @State var image: UIImage?
     @State var isSelected: Bool = false
     @StateObject private var viewModel = ImgurDataViewModel()
-    @State private var isLoading:Bool = false
+    @StateObject private var dropboxViewModel = DropboxViewModel()
+    @State private var isShowDropboxList:Bool = false
     
     @Environment(\.modelContext) private var modelContext
     
@@ -71,7 +72,17 @@ struct ContentView: View {
                         .padding()
                         
                         Button(action: {
-                            // Dropboxを開く
+                            
+                            print(dropboxViewModel.isAuthenticated)
+                            
+                            if dropboxViewModel.isAuthenticated {
+                                  // 認証済みなら画像の一覧を取得
+                                dropboxViewModel.listFiles()
+                                isShowDropboxList = true
+                              } else {
+                                  // 未認証なら認証画面を表示
+                                  dropboxViewModel.performLogin()
+                              }
                             
                         }, label: {
                             Label(
@@ -137,6 +148,18 @@ struct ContentView: View {
                 }
             }
             .interstitialAd(isPresented: $showAd)
+            .sheet(isPresented: $isShowDropboxList) {
+                let files = dropboxViewModel.files
+                
+                if !files.isEmpty {
+                    List(files, id: \.pathLower) { file in
+                        Text(file.name)
+                            .onTapGesture {
+                                dropboxViewModel.downloadImage(file)
+                            }
+                    }
+                }
+            }
             .sheet(isPresented: $viewModel.isShowSheet,onDismiss: {
                 image = nil
                 showingToolbar = true
