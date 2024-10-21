@@ -28,7 +28,7 @@
 		24F894AF2C0B1D7B00DCE4FD /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F894AE2C0B1D7B00DCE4FD /* Data.swift */; };
 		B11B06A22CC183D100A96B89 /* SwiftyDropbox in Frameworks */ = {isa = PBXBuildFile; productRef = B11B06A12CC183D100A96B89 /* SwiftyDropbox */; };
 		B11B06B22CC3E91300A96B89 /* DropboxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11B06B12CC3E91300A96B89 /* DropboxViewModel.swift */; };
-		B12E70DF2C635CDE00531340 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B12E70DE2C635CDE00531340 /* GoogleService-Info.plist */; };
+		B1AF691B2CC6C3D700C4D44E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B1AF69192CC6C3D700C4D44E /* GoogleService-Info.plist */; };
 		B1BC79B12CAACA0F005798C6 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = B1BC79B02CAACA0F005798C6 /* FirebaseCrashlytics */; };
 /* End PBXBuildFile section */
 
@@ -67,10 +67,10 @@
 		24A5D33C2B4C019500CA8D89 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		24AF264D2BFA485E00578A16 /* ImgurService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgurService.swift; sourceTree = "<group>"; };
 		24B72A072C49A234007D68AC /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
-		24B72A092C49A271007D68AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24F894AE2C0B1D7B00DCE4FD /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		B11B06B12CC3E91300A96B89 /* DropboxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropboxViewModel.swift; sourceTree = "<group>"; };
-		B12E70DE2C635CDE00531340 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B1AF69192CC6C3D700C4D44E /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B1AF691D2CC6C48300C4D44E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,8 +136,8 @@
 		2442EEA12B4ABB7300ECDE60 /* ImgurUploader */ = {
 			isa = PBXGroup;
 			children = (
-				B12E70DE2C635CDE00531340 /* GoogleService-Info.plist */,
-				24B72A092C49A271007D68AC /* Info.plist */,
+				B1AF691D2CC6C48300C4D44E /* Info.plist */,
+				B1AF69192CC6C3D700C4D44E /* GoogleService-Info.plist */,
 				2442EEA22B4ABB7300ECDE60 /* ImgurUploaderApp.swift */,
 				24328E342C01E5E900AC3430 /* Model */,
 				24AF264C2BFA482B00578A16 /* ViewModel */,
@@ -317,7 +317,7 @@
 			files = (
 				2442EEAA2B4ABB7400ECDE60 /* Preview Assets.xcassets in Resources */,
 				2442EEA72B4ABB7400ECDE60 /* Assets.xcassets in Resources */,
-				B12E70DF2C635CDE00531340 /* GoogleService-Info.plist in Resources */,
+				B1AF691B2CC6C3D700C4D44E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,6 +545,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ImgurUploader/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -580,6 +581,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ImgurUploader/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
