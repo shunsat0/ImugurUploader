@@ -76,14 +76,14 @@ struct ContentView: View {
                             print(dropboxViewModel.isAuthenticated)
                             
                             if dropboxViewModel.isAuthenticated {
-                                  // 認証済みなら画像の一覧を取得
+                                // 認証済みなら画像の一覧を取得
                                 dropboxViewModel.listFiles()
                                 isShowDropboxList = true
-                            
-                              } else {
-                                  // 未認証なら認証画面を表示
-                                  dropboxViewModel.performLogin()
-                              }
+                                
+                            } else {
+                                // 未認証なら認証画面を表示
+                                dropboxViewModel.performLogin()
+                            }
                             
                         }, label: {
                             Label(
@@ -154,41 +154,36 @@ struct ContentView: View {
                 let files = dropboxViewModel.files
                 let images = dropboxViewModel.dropboxImages
                 
+                let gridItemLayout = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
+                
                 if !files.isEmpty {
-                    List(files, id: \.pathLower) { file in
-                        VStack {
-                            if let image = images[file.pathLower ?? ""] {
-                                Image(uiImage: image)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(height: 150)
-                                    .cornerRadius(10)
-                                    .padding()
-                                    .onTapGesture {
-                                        // 選択した画像を`image`プロパティに格納して`sheet`を閉じる
-                                        self.image = image
-                                        isShowDropboxList = false
-                                        isSelected = true
-                                    }
-                            } else {
-                                // ダウンロードされるまでのプレースホルダー
-                                Rectangle()
-                                    .fill(Color.gray.opacity(0.3))
-                                    .frame(height: 150)
-                                    .cornerRadius(10)
-                                    .overlay(Text("No Image").foregroundColor(.white))
+                    ScrollView {
+                        LazyVGrid(columns: gridItemLayout, spacing: 0) {
+                            ForEach(files, id: \.pathLower) { file in
+                                if let image = images[file.pathLower ?? ""] {
+                                    Image(uiImage: image)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .onTapGesture {
+                                            self.image = image
+                                            isShowDropboxList = false
+                                            isSelected = true
+                                        }
+                                } else {
+                                    ProgressView()
+                                }
                             }
-
-                            Text(file.name)
+                            
                         }
+                        .padding()
                     }
                 } else {
-                    Text("No files available")
+                    ProgressView()
                 }
             }
-
-
-
+            
+            
+            
             .sheet(isPresented: $viewModel.isShowSheet,onDismiss: {
                 image = nil
                 showingToolbar = true
