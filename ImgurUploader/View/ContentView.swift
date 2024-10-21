@@ -18,10 +18,9 @@ struct ContentView: View {
     @StateObject private var viewModel = ImgurDataViewModel()
     @StateObject private var dropboxViewModel = DropboxViewModel()
     @State private var isShowDropboxList:Bool = false
-    
     @Environment(\.modelContext) private var modelContext
-    
     @State private var showAd: Bool = false
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         
@@ -154,36 +153,48 @@ struct ContentView: View {
                 let files = dropboxViewModel.files
                 let images = dropboxViewModel.dropboxImages
                 
-                let gridItemLayout = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
+                let threeColumnGrid = [
+                    GridItem(.flexible(minimum: 40), spacing: 0),
+                    GridItem(.flexible(minimum: 40), spacing: 0),
+                    GridItem(.flexible(minimum: 40), spacing: 0),
+                ]
                 
-                if !files.isEmpty {
-                    ScrollView {
-                        LazyVGrid(columns: gridItemLayout, spacing: 0) {
-                            ForEach(files, id: \.pathLower) { file in
-                                if let image = images[file.pathLower ?? ""] {
-                                    Image(uiImage: image)
-                                        .resizable()
-                                        .scaledToFit()
-                                        .onTapGesture {
-                                            self.image = image
-                                            isShowDropboxList = false
-                                            isSelected = true
-                                        }
-                                } else {
-                                    ProgressView()
+                NavigationView {
+                    if !files.isEmpty {
+                        ScrollView {
+                            LazyVGrid(columns: threeColumnGrid, spacing: 0) {
+                                ForEach(files, id: \.pathLower) { file in
+                                    if let image = images[file.pathLower ?? ""] {
+                                        Image(uiImage: image)
+                                            .resizable()
+                                            .aspectRatio(1, contentMode: .fill)
+                                            .border(colorScheme == .dark ? .black : .white)
+                                            .onTapGesture {
+                                                self.image = image
+                                                isShowDropboxList = false
+                                                isSelected = true
+                                            }
+                                    } else {
+                                        ProgressView()
+                                            .frame(width: 100, height: 100)
+                                    }
                                 }
                             }
-                            
                         }
-                        .padding()
+                        .navigationTitle("Dropbox Image")
+                        .toolbar {
+                            ToolbarItem(placement: .navigationBarLeading) {
+                                Button("Cancel") {
+                                    isShowDropboxList = false
+                                }
+                            }
+                        }
+                    } else {
+                        ProgressView()
                     }
-                } else {
-                    ProgressView()
                 }
             }
-            
-            
-            
+
             .sheet(isPresented: $viewModel.isShowSheet,onDismiss: {
                 image = nil
                 showingToolbar = true
