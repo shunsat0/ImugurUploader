@@ -27,6 +27,7 @@
 		24B86D052C4B9C1B0036E4FE /* WebUI in Frameworks */ = {isa = PBXBuildFile; productRef = 24B86D042C4B9C1B0036E4FE /* WebUI */; };
 		24F894AF2C0B1D7B00DCE4FD /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F894AE2C0B1D7B00DCE4FD /* Data.swift */; };
 		B11B06A22CC183D100A96B89 /* SwiftyDropbox in Frameworks */ = {isa = PBXBuildFile; productRef = B11B06A12CC183D100A96B89 /* SwiftyDropbox */; };
+		B11B06B22CC3E91300A96B89 /* DropboxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11B06B12CC3E91300A96B89 /* DropboxViewModel.swift */; };
 		B12E70DF2C635CDE00531340 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B12E70DE2C635CDE00531340 /* GoogleService-Info.plist */; };
 		B1BC79B12CAACA0F005798C6 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = B1BC79B02CAACA0F005798C6 /* FirebaseCrashlytics */; };
 /* End PBXBuildFile section */
@@ -68,6 +69,7 @@
 		24B72A072C49A234007D68AC /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
 		24B72A092C49A271007D68AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24F894AE2C0B1D7B00DCE4FD /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		B11B06B12CC3E91300A96B89 /* DropboxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropboxViewModel.swift; sourceTree = "<group>"; };
 		B12E70DE2C635CDE00531340 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -188,6 +190,7 @@
 			children = (
 				24AF264D2BFA485E00578A16 /* ImgurService.swift */,
 				24A5D3382B4BD91A00CA8D89 /* PhotoData.swift */,
+				B11B06B12CC3E91300A96B89 /* DropboxViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2442EEA52B4ABB7300ECDE60 /* ContentView.swift in Sources */,
+				B11B06B22CC3E91300A96B89 /* DropboxViewModel.swift in Sources */,
 				2442EEA32B4ABB7300ECDE60 /* ImgurUploaderApp.swift in Sources */,
 				24A5D3392B4BD91A00CA8D89 /* PhotoData.swift in Sources */,
 				24A5D33D2B4C019500CA8D89 /* InfoView.swift in Sources */,
