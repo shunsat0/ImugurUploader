@@ -115,5 +115,13 @@ class DropboxViewModel: ObservableObject {
             }
         }
     }
+    
+    func logout() {
+         DropboxClientsManager.unlinkClients()
+         isAuthenticated = false
+         files.removeAll()
+         dropboxImages.removeAll()
+         print("User logged out from Dropbox.")
+     }
 
 }
