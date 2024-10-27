@@ -56,10 +56,9 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct ImgurUploaderApp: App {
     init() {
-        //        if let apiKey = Bundle.main.object(forInfoDictionaryKey: "DROPBOX_API_KEY") as? String {
-        //            DropboxClientsManager.setupWithAppKey(apiKey)
-        //        }
-        DropboxClientsManager.setupWithAppKey("bts78kpfcf7dv20")
+        if let apiKey = Bundle.main.object(forInfoDictionaryKey: "DROPBOX_API_KEY") as? String {
+            DropboxClientsManager.setupWithAppKey(apiKey)
+        }
         UIPageControl.appearance().currentPageIndicatorTintColor = UIColor.systemBlue
         UIPageControl.appearance().pageIndicatorTintColor = UIColor.systemGray
     }
