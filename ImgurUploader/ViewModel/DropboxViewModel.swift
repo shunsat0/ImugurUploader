@@ -15,6 +15,7 @@ class DropboxViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var dropboxImages: [String: UIImage] = [:]
     @Published var isLoggedOut = false
+
     
     init() {
         checkAuthentication()
@@ -28,7 +29,6 @@ class DropboxViewModel: ObservableObject {
         let scopeRequest = ScopeRequest(
             scopeType: .user,
             scopes: [
-                "account_info.read",
                 "files.metadata.read",
                 "files.content.read"
             ],
