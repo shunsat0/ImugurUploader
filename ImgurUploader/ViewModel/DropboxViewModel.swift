@@ -14,6 +14,7 @@ class DropboxViewModel: ObservableObject {
     @Published var selectedImage: UIImage? = nil
     @Published var isLoading = false
     @Published var dropboxImages: [String: UIImage] = [:]
+    @Published var isLoggedOut = false
     
     init() {
         checkAuthentication()
@@ -47,7 +48,7 @@ class DropboxViewModel: ObservableObject {
             print("User is not logged in")
             return
         }
-
+        
         isLoading = true
         client.files.listFolder(path: "").response { response, error in
             DispatchQueue.main.async {
@@ -72,15 +73,15 @@ class DropboxViewModel: ObservableObject {
             }
         }
     }
-
-
+    
+    
     
     func downloadImage(_ file: Files.Metadata) {
         guard let client = DropboxClientsManager.authorizedClient else {
             print("User is not logged in")
             return
         }
-
+        
         if let fileMetadata = file as? Files.FileMetadata {
             print("Downloading image for path: \(fileMetadata.pathLower ?? "unknown")")
             client.files.download(path: fileMetadata.pathLower ?? "").response { response, error in
@@ -98,11 +99,12 @@ class DropboxViewModel: ObservableObject {
     }
     
     func logout() {
-         DropboxClientsManager.unlinkClients()
-         isAuthenticated = false
-         files.removeAll()
-         dropboxImages.removeAll()
-         print("User logged out from Dropbox.")
-     }
-
+        DropboxClientsManager.unlinkClients()
+        isAuthenticated = false
+        files.removeAll()
+        dropboxImages.removeAll()
+        isLoggedOut = true
+        print("User logged out from Dropbox.")
+    }
+    
 }
