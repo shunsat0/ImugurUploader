@@ -7,6 +7,7 @@
 
 import SwiftUI
 import PhotosUI
+import SwiftyDropbox
 
 struct ContentView: View {
     @State private var showingAlert:Bool = false
@@ -72,16 +73,15 @@ struct ContentView: View {
                         
                         Button(action: {
                             
-                            print(dropboxViewModel.isAuthenticated)
-                            
-                            if dropboxViewModel.isAuthenticated {
-                                // 認証済みなら画像の一覧を取得
-                                dropboxViewModel.listFiles()
-                                isShowDropboxList = true
-                                
-                            } else {
-                                // 未認証なら認証画面を表示
+                            // 認証前
+                            if (DropboxClientsManager.authorizedClient == nil) {
                                 dropboxViewModel.performLogin()
+                            } else {
+                                Task {
+                                    dropboxViewModel.listFiles()
+                                }
+                                isShowDropboxList = true
+                            
                             }
                             
                         }, label: {
@@ -114,7 +114,7 @@ struct ContentView: View {
                         Button("Cancel") {
                             image = nil
                             isSelected.toggle()
-                            showingToolbar.toggle()
+//                            showingToolbar = true
                         }
                         .padding(5)
                         .background(.red)
@@ -197,7 +197,7 @@ struct ContentView: View {
 
             .sheet(isPresented: $viewModel.isShowSheet,onDismiss: {
                 image = nil
-                showingToolbar = true
+                showingToolbar = false
                 viewModel.isShowSheet = false
                 isSelected = false
                 showAd = true

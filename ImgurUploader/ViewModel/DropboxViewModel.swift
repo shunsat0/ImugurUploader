@@ -37,28 +37,9 @@ class DropboxViewModel: ObservableObject {
             UIApplication.shared,
             controller: nil,
             loadingStatusDelegate: nil,
-            openURL: { (url: URL) -> Void in
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            },
+            openURL: { (url: URL) -> Void in UIApplication.shared.open(url, options: [:], completionHandler: nil) },
             scopeRequest: scopeRequest
         )
-    }
-    
-    func handleOpenURL(_ url: URL) {
-        let oauthCompletion: DropboxOAuthCompletion = {
-            if let authResult = $0 {
-                switch authResult {
-                case .success:
-                    print("Success! User is logged into DropboxClientsManager.")
-                    self.isAuthenticated = true
-                case .cancel:
-                    print("Authorization flow was manually canceled by user!")
-                case .error(_, let description):
-                    print("Error: \(String(describing: description))")
-                }
-            }
-        }
-        DropboxClientsManager.handleRedirectURL(url, backgroundSessionIdentifier: "patata", completion: oauthCompletion)
     }
     
     func listFiles() {
@@ -66,7 +47,7 @@ class DropboxViewModel: ObservableObject {
             print("User is not logged in")
             return
         }
-        
+
         isLoading = true
         client.files.listFolder(path: "").response { response, error in
             DispatchQueue.main.async {
@@ -80,9 +61,8 @@ class DropboxViewModel: ObservableObject {
                         }
                         return false
                     }
-                    print("Filtered files: \(self.files)")
                     
-                    // ファイルリストを取得した後、各画像を自動的にダウンロード
+                    // ファイルリストが確定した後、各画像を自動的にダウンロード
                     self.files.forEach { file in
                         self.downloadImage(file)
                     }
@@ -92,6 +72,7 @@ class DropboxViewModel: ObservableObject {
             }
         }
     }
+
 
     
     func downloadImage(_ file: Files.Metadata) {
