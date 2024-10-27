@@ -208,7 +208,7 @@ struct ContentView: View {
                         .navigationTitle("Dropbox Image")
                         .toolbar {
                             ToolbarItem(placement: .navigationBarLeading) {
-                                Button("Cancel") {
+                                Button("Close") {
                                     isShowDropboxList = false
                                 }
                             }
@@ -218,7 +218,8 @@ struct ContentView: View {
                     }
                 }
             }
-            .sheet(isPresented: $viewModel.isShowSheet,onDismiss: {
+            .fullScreenCover(isPresented: $viewModel.isShowSheet,onDismiss: {
+                viewModel.isShowIntersitalAd = true
                 image = nil
                 viewModel.isShowSheet = false
                 isSelected = false
@@ -251,7 +252,7 @@ struct ContentView: View {
                 
             }
         }
-        .interstitialAd(isPresented: $viewModel.showInterstitialAd)
+        .interstitialAd(isPresented: $viewModel.isShowIntersitalAd)
     }
 }
 

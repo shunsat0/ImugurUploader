@@ -8,7 +8,7 @@
 import SwiftUI
 import GoogleMobileAds
 
-class InterstitialAd: NSObject, ObservableObject {
+class InterstitialAd: NSObject, ObservableObject, GADFullScreenContentDelegate {
     @Published var interstitial: GADInterstitialAd?
     
     override init() {
@@ -32,10 +32,18 @@ class InterstitialAd: NSObject, ObservableObject {
     
     func showAd(from rootViewController: UIViewController) {
         if let ad = interstitial {
+            ad.fullScreenContentDelegate = self // デリゲート設定
             ad.present(fromRootViewController: rootViewController)
         } else {
             print("Ad wasn't ready")
             loadAd()
+        }
+    }
+    
+    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        // 広告が閉じられたときの処理
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(name: .interstitialAdDismissed, object: nil)
         }
     }
 }
@@ -73,4 +81,8 @@ extension View {
     func interstitialAd(isPresented: Binding<Bool>) -> some View {
         self.modifier(InterstitialAdViewModifier(isPresented: isPresented))
     }
+}
+
+extension Notification.Name {
+    static let interstitialAdDismissed = Notification.Name("interstitialAdDismissed")
 }

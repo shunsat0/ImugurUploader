@@ -16,7 +16,8 @@ final class ImgurDataViewModel: ObservableObject {
     @Published var errorMessage: String?
     @Published var isUploading: Bool = false
     @Published var isShowSheet: Bool = false
-
+    @Published var isShowIntersitalAd: Bool = false
+    
     func postImage(image: UIImage) async {
         let url  = "https://api.imgur.com/3/image"
         let clientId = "d6ee7fa84ca8bd2"
@@ -48,11 +49,13 @@ final class ImgurDataViewModel: ObservableObject {
             to: url,
             headers: headers
         ).responseData { response in
+            //TODO: 確実にアップロードが終わるまでローディング表示→広告表示になっているか確認
             DispatchQueue.main.async {
                 self.isUploading = false
-                self.isShowSheet = true
             }
-
+            
+            self.isShowIntersitalAd = true
+            
             guard let data = response.data else {
                 Crashlytics.crashlytics().setCustomValue("No response data", forKey: "ImageUploadError")
                 return
@@ -76,7 +79,11 @@ final class ImgurDataViewModel: ObservableObject {
                 DispatchQueue.main.async {
                     self.postedImageData = model
                 }
-                                            
+                
+                NotificationCenter.default.addObserver(forName: .interstitialAdDismissed, object: nil, queue: .main) { _ in
+                    self.isShowSheet = true
+                }
+                
             } catch {
                 print("Failed to decode response: \(error)")
                 // デコードエラー時のログ
@@ -84,13 +91,14 @@ final class ImgurDataViewModel: ObservableObject {
                 Crashlytics.crashlytics().record(error: error)
             }
         }
+        
     }
     
     func delete(hashcode: String) async throws -> String {
         // 削除処理開始時のログ
         Crashlytics.crashlytics().log("Starting image delete")
         Crashlytics.crashlytics().setCustomValue(hashcode, forKey: "DeleteHashcode")
-
+        
         let url = URL(string: "https://api.imgur.com/3/image/\(hashcode)")!
         
         var request = URLRequest(url: url)
