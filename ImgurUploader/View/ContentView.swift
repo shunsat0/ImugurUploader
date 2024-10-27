@@ -126,8 +126,6 @@ struct ContentView: View {
                 
                 BannerAd()
             }
-            .onAppear() {
-            }
             .interstitialAd(isPresented: $showAd)
             .onOpenURL { url in
                 print("url: \(url)")
