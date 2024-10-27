@@ -12,7 +12,6 @@ import SwiftyDropbox
 struct ContentView: View {
     @State private var showingAlert:Bool = false
     @State private var pasteString:String  = ""
-    @State private var showingToolbar:Bool = true
     @State var selectedItem: PhotosPickerItem?
     @State var image: UIImage?
     @State var isSelected: Bool = false
@@ -22,9 +21,10 @@ struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @State private var showAd: Bool = false
     @Environment(\.colorScheme) var colorScheme
+    @State private var alertMessage: String = ""
+    @State private var isAlertShowing: Bool = false
     
     var body: some View {
-        
         NavigationStack {
             VStack {
                 Spacer()
@@ -61,7 +61,6 @@ struct ContentView: View {
                             .font(.title)
                         }
                         .onChange(of: selectedItem) {
-                            showingToolbar = false
                             Task {
                                 guard let imageData = try await selectedItem?.loadTransferable(type: Data.self) else { return }
                                 guard let uiImage = UIImage(data: imageData) else { return }
@@ -81,7 +80,6 @@ struct ContentView: View {
                                     dropboxViewModel.listFiles()
                                 }
                                 isShowDropboxList = true
-                            
                             }
                             
                         }, label: {
@@ -114,7 +112,6 @@ struct ContentView: View {
                         Button("Cancel") {
                             image = nil
                             isSelected.toggle()
-//                            showingToolbar = true
                         }
                         .padding(5)
                         .background(.red)
@@ -129,10 +126,32 @@ struct ContentView: View {
                 
                 BannerAd()
             }
+            .onAppear() {
+            }
+            .interstitialAd(isPresented: $showAd)
+            .onOpenURL { url in
+                print("url: \(url)")
+                let oauthCompletion: DropboxOAuthCompletion = {
+                    if let authResult = $0 {
+                        switch authResult {
+                        case .success:
+                            alertMessage = "Successfully logged in to dropbox."
+                            isAlertShowing = true
+                        case .cancel:
+                            alertMessage = "Authentication to dropbox has been canceled."
+                            isAlertShowing = true
+                        case .error(_, _):
+                            alertMessage = "An unexpected error has occurred."
+                            isAlertShowing = true
+                        }
+                    }
+                }
+                DropboxClientsManager.handleRedirectURL(url, backgroundSessionIdentifier: "patata", completion: oauthCompletion)
+            }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink(destination: ListView()) {
-                        if showingToolbar {
+                        if !isSelected {
                             Image(systemName: "photo.stack.fill")
                         }
                     }
@@ -141,14 +160,12 @@ struct ContentView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     NavigationLink(destination: InfoView()) {
-                        if showingToolbar {
+                        if !isSelected {
                             Image(systemName: "info.circle")
                         }
                     }
                 }
             }
-            .interstitialAd(isPresented: $showAd)
-            
             .sheet(isPresented: $isShowDropboxList) {
                 let files = dropboxViewModel.files
                 let images = dropboxViewModel.dropboxImages
@@ -194,15 +211,11 @@ struct ContentView: View {
                     }
                 }
             }
-
             .sheet(isPresented: $viewModel.isShowSheet,onDismiss: {
                 image = nil
-                showingToolbar = false
                 viewModel.isShowSheet = false
                 isSelected = false
                 showAd = true
-                
-                /// データ永続化
                 let newData = ImageData(url: viewModel.postedImageData!.data.link, deletehas: viewModel.postedImageData!.data.deletehash)
                 modelContext.insert(newData)
             }){
@@ -230,6 +243,12 @@ struct ContentView: View {
                     }
                 }
                 
+            }
+            .alert("Authentication Result.", isPresented: $isAlertShowing) {
+                Button("OK") {}
+                
+            } message: {
+                Text(alertMessage)
             }
         }
     }
