@@ -99,6 +99,7 @@ class DropboxViewModel: ObservableObject {
     }
     
     func logout() {
+        feature/dropbox-login-fix
         DropboxClientsManager.unlinkClients()
         isAuthenticated = false
         files.removeAll()
@@ -106,5 +107,4 @@ class DropboxViewModel: ObservableObject {
         isLoggedOut = true
         print("User logged out from Dropbox.")
     }
-    
 }
