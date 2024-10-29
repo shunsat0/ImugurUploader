@@ -9,8 +9,9 @@ import SwiftUI
 import WebUI
 
 struct InfoView: View {
+    @StateObject var viewModel = DropboxViewModel()
+    
     var body: some View {
-        
         List {
             NavigationLink(
                 destination: TutorialView(),
@@ -44,6 +45,21 @@ struct InfoView: View {
                     }
                 }
             )
+            
+            Button {
+                viewModel.logout()
+            } label: {
+                HStack {
+                    Image(systemName: "figure.walk")
+                    Text("Logout Dropbox")
+                }
+            }
+
+        }
+        .alert("Logout succeeded.", isPresented: $viewModel.isLoggedOut) {
+            Button("OK") {
+                
+            }
         }
     }
 }
