@@ -19,7 +19,6 @@ struct ContentView: View {
     @StateObject private var dropboxViewModel = DropboxViewModel()
     @State private var isShowDropboxList:Bool = false
     @Environment(\.modelContext) private var modelContext
-    @State private var showAd: Bool = false
     @Environment(\.colorScheme) var colorScheme
     @State private var alertMessage: String = ""
     @State private var isAlertShowing: Bool = false
@@ -55,7 +54,7 @@ struct ContentView: View {
                     VStack {
                         PhotosPicker(selection: $selectedItem, matching: .images) {
                             Label(
-                                title: { Text("Pick a Photo") },
+                                title: { Text("Photo Library") },
                                 icon: { Image(systemName: "photo") }
                             )
                             .font(.title)
@@ -76,9 +75,7 @@ struct ContentView: View {
                             if (DropboxClientsManager.authorizedClient == nil) {
                                 dropboxViewModel.performLogin()
                             } else {
-                                Task {
-                                    dropboxViewModel.listFiles()
-                                }
+                                dropboxViewModel.listFiles()
                                 isShowDropboxList = true
                             }
                             
@@ -126,25 +123,37 @@ struct ContentView: View {
                 
                 BannerAd()
             }
-            .interstitialAd(isPresented: $showAd)
             .onOpenURL { url in
                 print("url: \(url)")
-                let oauthCompletion: DropboxOAuthCompletion = {
-                    if let authResult = $0 {
-                        switch authResult {
-                        case .success:
-                            alertMessage = "Successfully logged in to dropbox."
+                let oauthCompletion: DropboxOAuthCompletion = { result in
+                    DispatchQueue.main.async { // Ensure main thread for UI updates
+                        print("oauthCompletion called with result: \(String(describing: result))")
+                        if let authResult = result {
+                            switch authResult {
+                            case .success:
+                                print("Login success")
+                                alertMessage = "Successfully logged in to Dropbox."
+                            case .cancel:
+                                print("Login canceled")
+                                alertMessage = "Authentication to Dropbox has been canceled."
+                            case .error(_, let description):
+                                print("Login error: \(description ?? "No description")")
+                                alertMessage = "An unexpected error has occurred."
+                            }
                             isAlertShowing = true
-                        case .cancel:
-                            alertMessage = "Authentication to dropbox has been canceled."
-                            isAlertShowing = true
-                        case .error(_, _):
-                            alertMessage = "An unexpected error has occurred."
-                            isAlertShowing = true
+                        } else {
+                            print("No result received in oauthCompletion")
                         }
                     }
                 }
+
                 DropboxClientsManager.handleRedirectURL(url, backgroundSessionIdentifier: "patata", completion: oauthCompletion)
+                print("handleRedirectURL call completed")
+            }
+            .alert("Authentication Result", isPresented: $isAlertShowing) {
+                Button("OK") {}
+            } message: {
+                Text(alertMessage)
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -199,7 +208,7 @@ struct ContentView: View {
                         .navigationTitle("Dropbox Image")
                         .toolbar {
                             ToolbarItem(placement: .navigationBarLeading) {
-                                Button("Cancel") {
+                                Button("Close") {
                                     isShowDropboxList = false
                                 }
                             }
@@ -209,11 +218,11 @@ struct ContentView: View {
                     }
                 }
             }
-            .sheet(isPresented: $viewModel.isShowSheet,onDismiss: {
+            .fullScreenCover(isPresented: $viewModel.isShowSheet,onDismiss: {
+                viewModel.isShowIntersitalAd = true
                 image = nil
                 viewModel.isShowSheet = false
                 isSelected = false
-                showAd = true
                 let newData = ImageData(url: viewModel.postedImageData!.data.link, deletehas: viewModel.postedImageData!.data.deletehash)
                 modelContext.insert(newData)
             }){
@@ -242,13 +251,8 @@ struct ContentView: View {
                 }
                 
             }
-            .alert("Authentication Result.", isPresented: $isAlertShowing) {
-                Button("OK") {}
-                
-            } message: {
-                Text(alertMessage)
-            }
         }
+        .interstitialAd(isPresented: $viewModel.isShowIntersitalAd)
     }
 }
 
