@@ -54,7 +54,7 @@ struct ContentView: View {
                     VStack {
                         PhotosPicker(selection: $selectedItem, matching: .images) {
                             Label(
-                                title: { Text("Pick a Photo") },
+                                title: { Text("Photo Library") },
                                 icon: { Image(systemName: "photo") }
                             )
                             .font(.title)
