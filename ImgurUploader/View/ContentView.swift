@@ -99,23 +99,16 @@ struct ContentView: View {
                             
                         }, label: {
                             Text("Start Upload")
-                                .padding(5)
-                                .background(isSelected ? .green : .gray)
-                                .foregroundColor(.white)
-                                .cornerRadius(10)
                         })
+                        .buttonStyle(.borderedProminent)
                         .disabled(!isSelected)
                         
                         Button("Cancel") {
                             image = nil
                             isSelected.toggle()
                         }
-                        .padding(5)
-                        .background(.red)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
-                        
                     }
+                    .buttonStyle(.bordered)
                     .padding()
                 }
                 
