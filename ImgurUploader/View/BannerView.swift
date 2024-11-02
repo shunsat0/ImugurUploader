@@ -19,17 +19,11 @@ class ViewController: UIViewController {
         
         let viewWidth = view.frame.inset(by: view.safeAreaInsets).width
         
-        // Here the current interface orientation is used. Use
-        // GADLandscapeAnchoredAdaptiveBannerAdSizeWithWidth or
-        // GADPortraitAnchoredAdaptiveBannerAdSizeWithWidth if you prefer to load an ad of a
-        // particular orientation,
         let adaptiveSize = GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(viewWidth)
         bannerView = GADBannerView(adSize: adaptiveSize)
         
         addBannerViewToView(bannerView)
         
-        
-        //  Set the ad unit ID and view controller that contains the GADBannerView.
         bannerView.adUnitID = "ca-app-pub-8467408220599556/3245374427"
         bannerView.rootViewController = self
         
