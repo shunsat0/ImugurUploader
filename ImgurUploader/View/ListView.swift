@@ -43,9 +43,8 @@ struct ListView: View {
                     }
                     
                     VStack(alignment: .leading) {
-                        Text(image.url)
-                            .textSelection(.enabled)
-                            .font(.caption)
+                        Text(imageUrl)
+                            .font(.headline)
                             .foregroundColor(.blue)
                             .swipeActions {
                                 Button("Delete", systemImage: "trash", role: .destructive) {
@@ -61,19 +60,22 @@ struct ListView: View {
                                     }
                                 }
                             }
+                            .padding(.bottom,10)
                         
-                        HStack {
-                            Text("(Delete Code)")
-                            
-                            Text(image.deletehas)
-                                .textSelection(.enabled)
-                        }
-                        .font(.caption2)
-                        .foregroundColor(.gray)
+                        Text("(Delete Code) \(image.deletehas)")
+                            .font(.caption2)
+                            .foregroundColor(.gray)
+                    }
+                    
+                    Spacer()
+                
+                    Button {
+                        UIPasteboard.general.string = imageUrl
+                        print(imageUrl)
+                    } label: {
+                        Image(systemName: "document.on.document")
                     }
                 }
-                
-                
             }
             
             OldListView()
