@@ -221,12 +221,7 @@ struct ContentView: View {
             }){
                 NavigationView {
                     VStack {
-                        Text("Success! Copy URL👍")
-                            .foregroundStyle(.green)
-                            .padding()
-                        
                         Text("\(viewModel.postedImageData!.data.link)")
-                            .textSelection(.enabled)
                             .font(.title)
                             .foregroundStyle(.blue)
                             .toolbar {
@@ -240,7 +235,17 @@ struct ContentView: View {
                                     })
                                 }
                             }
+                            .padding(.bottom,15)
+                        
+                        
+                        Button {
+                            UIPasteboard.general.string = viewModel.postedImageData!.data.link
+                        } label: {
+                            Image(systemName: "document.on.document")
+                        }
+                        .controlSize(.large)
                     }
+                    .padding()
                 }
                 
             }
