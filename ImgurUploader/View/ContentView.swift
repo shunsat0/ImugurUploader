@@ -161,7 +161,7 @@ struct ContentView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     NavigationLink(destination: InfoView()) {
                         if !isSelected {
-                            Image(systemName: "info.circle")
+                            Image(systemName: "gear")
                         }
                     }
                 }
