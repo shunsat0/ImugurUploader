@@ -201,7 +201,7 @@ struct ContentView: View {
                         .navigationTitle("Dropbox Image")
                         .toolbar {
                             ToolbarItem(placement: .navigationBarLeading) {
-                                Button("Close") {
+                                Button("Cancel") {
                                     isShowDropboxList = false
                                 }
                             }
