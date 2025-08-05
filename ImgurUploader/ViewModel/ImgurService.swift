@@ -9,14 +9,15 @@ import Alamofire
 import SwiftUI
 import Combine
 import FirebaseCrashlytics
+import Observation
 
-final class ImgurDataViewModel: ObservableObject {
+@Observable @MainActor final class ImgurDataViewModel {
     
-    @Published var postedImageData: ImgurDataModel?
-    @Published var errorMessage: String?
-    @Published var isUploading: Bool = false
-    @Published var isShowSheet: Bool = false
-    @Published var isShowIntersitalAd: Bool = false
+    var postedImageData: ImgurDataModel?
+    var errorMessage: String?
+    var isUploading: Bool = false
+    var isShowSheet: Bool = false
+    var isShowIntersitalAd: Bool = false
     
     func postImage(image: UIImage) async {
         let url  = "https://api.imgur.com/3/image"
