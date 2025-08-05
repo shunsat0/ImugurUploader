@@ -25,7 +25,7 @@ struct InfoView: View {
             )
             
             NavigationLink(
-                destination: WebView(request: URLRequest(url: URL(string: "https://youten410.app/privacy-policy/imgur/terms.html")!)),
+                destination: WebView(request: URLRequest(url: URL(string: "https://shunsato.me/privacy-policy/imgur/terms.html")!)),
                 label: {
                     HStack {
                         Image(systemName: "info.circle")
@@ -36,7 +36,7 @@ struct InfoView: View {
             )
             
             NavigationLink(
-                destination: WebView(request: URLRequest(url: URL(string: "https://youten410.app/privacy-policy/imgur/policy.html")!)),
+                destination: WebView(request: URLRequest(url: URL(string: "https://shunsato.me/privacy-policy/imgur/policy.html")!)),
                 label: {
                     HStack {
                         Image(systemName: "info.circle")
