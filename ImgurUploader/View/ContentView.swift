@@ -15,8 +15,8 @@ struct ContentView: View {
     @State var selectedItem: PhotosPickerItem?
     @State var image: UIImage?
     @State var isSelected: Bool = false
-    @StateObject private var viewModel = ImgurDataViewModel()
-    @StateObject private var dropboxViewModel = DropboxViewModel()
+    @State private var viewModel = ImgurDataViewModel()
+    @State private var dropboxViewModel = DropboxViewModel()
     @State private var isShowDropboxList:Bool = false
     @Environment(\.modelContext) private var modelContext
     @Environment(\.colorScheme) var colorScheme
