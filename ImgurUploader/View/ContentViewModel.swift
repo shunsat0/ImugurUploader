@@ -2,25 +2,26 @@ import SwiftUI
 import PhotosUI
 import SwiftyDropbox
 import SwiftData
+import Observation
 
-final class ContentViewModel: ObservableObject {
+@MainActor @Observable final class ContentViewModel {
     // MARK: - Child ViewModels
     let imgurVM: ImgurDataViewModel
     let dropboxVM: DropboxViewModel
     
     // MARK: - UI State
-    @Published var selectedItem: PhotosPickerItem?
-    @Published var image: UIImage?
-    @Published var isSelected: Bool = false
-    @Published var isShowDropboxList: Bool = false
-    @Published var alertMessage: String = ""
-    @Published var isAlertShowing: Bool = false
+    var selectedItem: PhotosPickerItem?
+    var image: UIImage?
+    var isSelected: Bool = false
+    var isShowDropboxList: Bool = false
+    var alertMessage: String = ""
+    var isAlertShowing: Bool = false
     
     // MARK: - Init
-    init(imgurVM: ImgurDataViewModel = ImgurDataViewModel(),
-         dropboxVM: DropboxViewModel = DropboxViewModel()) {
-        self.imgurVM = imgurVM
-        self.dropboxVM = dropboxVM
+    init(imgurVM: ImgurDataViewModel? = nil,
+         dropboxVM: DropboxViewModel? = nil) {
+        self.imgurVM = imgurVM ?? ImgurDataViewModel()
+        self.dropboxVM = dropboxVM ?? DropboxViewModel()
         self.selectedItem = nil
         self.image = nil
     }
@@ -29,7 +30,6 @@ final class ContentViewModel: ObservableObject {
     var isUploading: Bool { imgurVM.isUploading }
     
     // MARK: - Actions
-    @MainActor
     func onSelectedItemChanged() async {
         guard let selectedItem else { return }
         do {
@@ -55,7 +55,6 @@ final class ContentViewModel: ObservableObject {
         }
     }
     
-    @MainActor
     func selectDropboxImage(_ image: UIImage) {
         self.image = image
         self.isShowDropboxList = false
@@ -116,3 +115,4 @@ final class ContentViewModel: ObservableObject {
         }
     }
 }
+
