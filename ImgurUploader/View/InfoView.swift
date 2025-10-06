@@ -67,7 +67,7 @@ struct InfoView: View {
 struct TutorialView: View {
     var body: some View {
         TabView {
-            ForEach(1...10, id: \.self) { item in
+            ForEach(1...17, id: \.self) { item in
                 Image("\(item)")
                     .resizable()
                     .scaledToFit()
