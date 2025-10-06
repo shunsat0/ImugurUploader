@@ -10,75 +10,54 @@ import PhotosUI
 import SwiftyDropbox
 
 struct ContentView: View {
-    @State private var showingAlert:Bool = false
-    @State private var pasteString:String  = ""
-    @State var selectedItem: PhotosPickerItem?
-    @State var image: UIImage?
-    @State var isSelected: Bool = false
-    @StateObject private var viewModel = ImgurDataViewModel()
-    @StateObject private var dropboxViewModel = DropboxViewModel()
-    @State private var isShowDropboxList:Bool = false
+    @State private var vm = ContentViewModel()
     @Environment(\.modelContext) private var modelContext
     @Environment(\.colorScheme) var colorScheme
-    @State private var alertMessage: String = ""
-    @State private var isAlertShowing: Bool = false
-    
+    @State private var isImgurSheetPresented = false
+    @State private var isInterstitialAdPresented = false
+
     var body: some View {
         NavigationStack {
             VStack {
                 Spacer()
-                
+
                 ZStack {
-                    if let image {
+                    if let image = vm.image {
                         Image(uiImage: image)
                             .resizable()
                             .scaledToFit()
                             .padding(20)
                     }
-                    
-                    if(viewModel.isUploading) {
+
+                    if vm.isUploading {
                         VStack {
                             ProgressView()
                                 .scaleEffect(2.0)
                                 .padding()
-                            
+
                             Text("Uploading...")
                                 .foregroundStyle(.gray)
                                 .bold()
                         }
                     }
-                    
                 }
-                
-                if(!isSelected && !viewModel.isUploading) {
+
+                if !vm.isSelected && !vm.isUploading {
                     VStack {
-                        PhotosPicker(selection: $selectedItem, matching: .images) {
+                        PhotosPicker(selection: $vm.selectedItem, matching: .images) {
                             Label(
                                 title: { Text("Photo Library") },
                                 icon: { Image(systemName: "photo") }
                             )
                             .font(.title)
                         }
-                        .onChange(of: selectedItem) {
-                            Task {
-                                guard let imageData = try await selectedItem?.loadTransferable(type: Data.self) else { return }
-                                guard let uiImage = UIImage(data: imageData) else { return }
-                                image = uiImage
-                                isSelected = true
-                            }
+                        .onChange(of: vm.selectedItem) { _, _ in
+                            Task { await vm.onSelectedItemChanged() }
                         }
                         .padding()
-                        
+
                         Button(action: {
-                            
-                            // 認証前
-                            if (DropboxClientsManager.authorizedClient == nil) {
-                                dropboxViewModel.performLogin()
-                            } else {
-                                dropboxViewModel.listFiles()
-                                isShowDropboxList = true
-                            }
-                            
+                            vm.didTapDropboxButton()
                         }, label: {
                             Label(
                                 title: { Text("Dropbox") },
@@ -89,69 +68,42 @@ struct ContentView: View {
                         .padding()
                     }
                 }
-                
-                if(isSelected && !viewModel.isUploading) {
+
+                if vm.isSelected && !vm.isUploading {
                     HStack {
                         Button(action: {
-                            Task {
-                                await viewModel.postImage(image: image!)
-                            }
-                            
+                            Task { await vm.startUpload() }
                         }, label: {
                             Text("Start Upload")
                         })
                         .buttonStyle(.borderedProminent)
-                        .disabled(!isSelected)
-                        
+                        .disabled(!vm.isSelected)
+
                         Button("Cancel") {
-                            image = nil
-                            isSelected.toggle()
+                            vm.image = nil
+                            vm.isSelected.toggle()
                         }
                     }
                     .buttonStyle(.bordered)
                     .padding()
                 }
-                
+
                 Spacer()
-                
+
                 BannerAd()
             }
             .onOpenURL { url in
-                print("url: \(url)")
-                let oauthCompletion: DropboxOAuthCompletion = { result in
-                    DispatchQueue.main.async { // Ensure main thread for UI updates
-                        print("oauthCompletion called with result: \(String(describing: result))")
-                        if let authResult = result {
-                            switch authResult {
-                            case .success:
-                                print("Login success")
-                                alertMessage = "Successfully logged in to Dropbox."
-                            case .cancel:
-                                print("Login canceled")
-                                alertMessage = "Authentication to Dropbox has been canceled."
-                            case .error(_, let description):
-                                print("Login error: \(description ?? "No description")")
-                                alertMessage = "An unexpected error has occurred."
-                            }
-                            isAlertShowing = true
-                        } else {
-                            print("No result received in oauthCompletion")
-                        }
-                    }
-                }
-
-                DropboxClientsManager.handleRedirectURL(url, backgroundSessionIdentifier: "patata", completion: oauthCompletion)
-                print("handleRedirectURL call completed")
+                vm.handleOpenURL(url)
             }
-            .alert("Authentication Result", isPresented: $isAlertShowing) {
+            .alert("Authentication Result", isPresented: $vm.isAlertShowing) {
                 Button("OK") {}
             } message: {
-                Text(alertMessage)
+                Text(vm.alertMessage)
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink(destination: ListView()) {
-                        if !isSelected {
+                        if !vm.isSelected {
                             Image(systemName: "photo.stack.fill")
                         }
                     }
@@ -160,22 +112,22 @@ struct ContentView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     NavigationLink(destination: InfoView()) {
-                        if !isSelected {
+                        if !vm.isSelected {
                             Image(systemName: "info.circle")
                         }
                     }
                 }
             }
-            .sheet(isPresented: $isShowDropboxList) {
-                let files = dropboxViewModel.files
-                let images = dropboxViewModel.dropboxImages
-                
+            .sheet(isPresented: $vm.isShowDropboxList) {
+                let files = vm.dropboxVM.files
+                let images = vm.dropboxVM.dropboxImages
+
                 let threeColumnGrid = [
                     GridItem(.flexible(minimum: 40), spacing: 0),
                     GridItem(.flexible(minimum: 40), spacing: 0),
                     GridItem(.flexible(minimum: 40), spacing: 0),
                 ]
-                
+
                 NavigationView {
                     if !files.isEmpty {
                         ScrollView {
@@ -187,9 +139,7 @@ struct ContentView: View {
                                             .aspectRatio(1, contentMode: .fill)
                                             .border(colorScheme == .dark ? .black : .white)
                                             .onTapGesture {
-                                                self.image = image
-                                                isShowDropboxList = false
-                                                isSelected = true
+                                                vm.selectDropboxImage(image)
                                             }
                                     } else {
                                         ProgressView()
@@ -202,7 +152,7 @@ struct ContentView: View {
                         .toolbar {
                             ToolbarItem(placement: .navigationBarLeading) {
                                 Button("Cancel") {
-                                    isShowDropboxList = false
+                                    vm.isShowDropboxList = false
                                 }
                             }
                         }
@@ -211,46 +161,51 @@ struct ContentView: View {
                     }
                 }
             }
-            .fullScreenCover(isPresented: $viewModel.isShowSheet,onDismiss: {
-                viewModel.isShowIntersitalAd = true
-                image = nil
-                viewModel.isShowSheet = false
-                isSelected = false
-                let newData = ImageData(url: viewModel.postedImageData!.data.link, deletehas: viewModel.postedImageData!.data.deletehash)
-                modelContext.insert(newData)
+            .fullScreenCover(isPresented: $isImgurSheetPresented, onDismiss: {
+                isImgurSheetPresented = false
+                vm.handleUploadDismiss(modelContext: modelContext)
             }){
                 NavigationView {
                     VStack {
-                        Text("\(viewModel.postedImageData!.data.link)")
-                            .font(.title)
-                            .foregroundStyle(.blue)
-                            .toolbar {
-                                ToolbarItem {
-                                    Button(action: {
-                                        viewModel.isShowSheet = false
-                                        isSelected = false
-                                    }, label: {
-                                        Image(systemName: "xmark.circle.fill")
-                                            .foregroundColor(.gray)
-                                    })
+                        if let link = vm.postedImageLink {
+                            Text("\(link)")
+                                .font(.title)
+                                .foregroundStyle(.blue)
+                                .toolbar {
+                                    ToolbarItem {
+                                        Button(action: {
+                                            vm.closeSheet()
+                                        }, label: {
+                                            Image(systemName: "xmark.circle.fill")
+                                                .foregroundColor(.gray)
+                                        })
+                                    }
                                 }
+                                .padding(.bottom,15)
+
+                            Button {
+                                vm.copyLinkToPasteboard()
+                            } label: {
+                                Image(systemName: "document.on.document")
                             }
-                            .padding(.bottom,15)
-                        
-                        
-                        Button {
-                            UIPasteboard.general.string = viewModel.postedImageData!.data.link
-                        } label: {
-                            Image(systemName: "document.on.document")
+                            .controlSize(.large)
                         }
-                        .controlSize(.large)
                     }
                     .padding()
                 }
-                
             }
         }
-        .interstitialAd(isPresented: $viewModel.isShowIntersitalAd)
+        .onChange(of: vm.imgurVM.isShowSheet) {
+            isImgurSheetPresented = vm.imgurVM.isShowSheet
+        }
+        .onChange(of: vm.imgurVM.isShowIntersitalAd) {
+            isInterstitialAdPresented = vm.imgurVM.isShowIntersitalAd
+        }
+        .onAppear {
+            isImgurSheetPresented = vm.imgurVM.isShowSheet
+            isInterstitialAdPresented = vm.imgurVM.isShowIntersitalAd
+        }
+        .interstitialAd(isPresented: $isInterstitialAdPresented)
     }
 }
 

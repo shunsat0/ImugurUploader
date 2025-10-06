@@ -19,11 +19,14 @@ class InterstitialAd: NSObject, ObservableObject, GADFullScreenContentDelegate {
     func loadAd() {
         Task {
             do {
-                interstitial = try await GADInterstitialAd.load(
+                let loadedAd = try await GADInterstitialAd.load(
                     withAdUnitID: "ca-app-pub-8467408220599556/5275845231",
                     request: GADRequest()
                 )
-                print("Interstitial ad loaded successfully")
+                DispatchQueue.main.async {
+                    self.interstitial = loadedAd
+                    print("Interstitial ad loaded successfully")
+                }
             } catch {
                 print("Failed to load interstitial ad with error: \(error.localizedDescription)")
             }
