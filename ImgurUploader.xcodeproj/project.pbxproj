@@ -26,6 +26,7 @@
 		24B72A0E2C49A450007D68AC /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 24B72A0D2C49A450007D68AC /* GoogleMobileAds */; };
 		24B86D052C4B9C1B0036E4FE /* WebUI in Frameworks */ = {isa = PBXBuildFile; productRef = 24B86D042C4B9C1B0036E4FE /* WebUI */; };
 		24F894AF2C0B1D7B00DCE4FD /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F894AE2C0B1D7B00DCE4FD /* Data.swift */; };
+		B1175C062E92CA79002B4E6B /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1175C052E92CA79002B4E6B /* ContentViewModel.swift */; };
 		B11B06A22CC183D100A96B89 /* SwiftyDropbox in Frameworks */ = {isa = PBXBuildFile; productRef = B11B06A12CC183D100A96B89 /* SwiftyDropbox */; };
 		B11B06B22CC3E91300A96B89 /* DropboxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11B06B12CC3E91300A96B89 /* DropboxViewModel.swift */; };
 		B1AF691B2CC6C3D700C4D44E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B1AF69192CC6C3D700C4D44E /* GoogleService-Info.plist */; };
@@ -68,6 +69,7 @@
 		24AF264D2BFA485E00578A16 /* ImgurService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgurService.swift; sourceTree = "<group>"; };
 		24B72A072C49A234007D68AC /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
 		24F894AE2C0B1D7B00DCE4FD /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		B1175C052E92CA79002B4E6B /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		B11B06B12CC3E91300A96B89 /* DropboxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropboxViewModel.swift; sourceTree = "<group>"; };
 		B1AF69192CC6C3D700C4D44E /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B1AF691D2CC6C48300C4D44E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				2442EEA42B4ABB7300ECDE60 /* ContentView.swift */,
 				24B72A072C49A234007D68AC /* BannerView.swift */,
 				248977AF2C4BAA68009420B1 /* InterstitialViiew.swift */,
+				B1175C052E92CA79002B4E6B /* ContentViewModel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				24328E362C01E61E00AC3430 /* ImgurDataModel.swift in Sources */,
 				24B72A082C49A234007D68AC /* BannerView.swift in Sources */,
 				248977B02C4BAA68009420B1 /* InterstitialViiew.swift in Sources */,
+				B1175C062E92CA79002B4E6B /* ContentViewModel.swift in Sources */,
 				24A5D3372B4BD73300CA8D89 /* ListView.swift in Sources */,
 				24AF264E2BFA485E00578A16 /* ImgurService.swift in Sources */,
 				24F894AF2C0B1D7B00DCE4FD /* Data.swift in Sources */,
@@ -536,11 +540,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1.2.0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"ImgurUploader/Preview Content\"";
-				DEVELOPMENT_TEAM = WB32WK7B28;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = WB32WK7B28;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -560,6 +566,8 @@
 				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.shunsato.ImgurUploader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = ImgurUploader;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -575,10 +583,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1.2.0;
 				DEVELOPMENT_ASSET_PATHS = "\"ImgurUploader/Preview Content\"";
-				DEVELOPMENT_TEAM = WB32WK7B28;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = WB32WK7B28;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -598,6 +608,8 @@
 				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.shunsato.ImgurUploader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = ImgurUploader;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;

@@ -12,7 +12,7 @@ struct ListView: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) private var modelContext
     @Query private var images: [ImageData]
-    @StateObject private var viewModel = ImgurDataViewModel()
+    @State private var viewModel = ImgurDataViewModel()
     
     var body: some View {
         List {
