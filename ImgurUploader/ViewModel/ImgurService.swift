@@ -51,11 +51,10 @@ import Observation
             headers: headers
         ).responseData { response in
             //TODO: 確実にアップロードが終わるまでローディング表示→広告表示になっているか確認
-            DispatchQueue.main.async {
+            Task { @MainActor in
                 self.isUploading = false
+                self.isShowIntersitalAd = true
             }
-            
-            self.isShowIntersitalAd = true
             
             guard let data = response.data else {
                 Crashlytics.crashlytics().setCustomValue("No response data", forKey: "ImageUploadError")
@@ -77,12 +76,14 @@ import Observation
                 
                 let model = ImgurDataModel(data: DataInfoModel(link: link, deletehash: deletehash))
                 
-                DispatchQueue.main.async {
+                Task { @MainActor in
                     self.postedImageData = model
-                }
-                
-                NotificationCenter.default.addObserver(forName: .interstitialAdDismissed, object: nil, queue: .main) { _ in
-                    self.isShowSheet = true
+                    NotificationCenter.default.addObserver(forName: .interstitialAdDismissed, object: nil, queue: .main) { [weak self] _ in
+                        guard let self else { return }
+                        Task { @MainActor in
+                            self.isShowSheet = true
+                        }
+                    }
                 }
                 
             } catch {
@@ -124,3 +125,4 @@ import Observation
         return String(data: data, encoding: .utf8) ?? "No response body"
     }
 }
+
