@@ -75,9 +75,14 @@ struct ListView: View {
             OldListView()
             
         }
-        .alert("この画像を削除しますか？", isPresented: $showDeleteAlert, presenting: imageToDelete) { image in
-            Button("削除", role: .destructive) {
+        .alert("Delete this image?", isPresented: $showDeleteAlert, presenting: imageToDelete) { image in
+            Button("OK", role: .destructive) {
                 modelContext.delete(image)
+                do {
+                    try modelContext.save()
+                } catch {
+                    print("Error saving context after delete: \(error)")
+                }
                 Task {
                     do {
                         let response = try await viewModel.delete(hashcode: image.deletehas)
@@ -88,7 +93,7 @@ struct ListView: View {
                 }
                 imageToDelete = nil
             }
-            Button("キャンセル", role: .cancel) {
+            Button("Cancel", role: .cancel) {
                 imageToDelete = nil
             }
         } message: { image in
