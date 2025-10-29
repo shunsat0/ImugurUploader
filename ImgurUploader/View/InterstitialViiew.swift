@@ -23,7 +23,7 @@ class InterstitialAd: NSObject, ObservableObject, GADFullScreenContentDelegate {
                     withAdUnitID: "ca-app-pub-8467408220599556/5275845231",
                     request: GADRequest()
                 )
-                DispatchQueue.main.async {
+                await MainActor.run {
                     self.interstitial = loadedAd
                     print("Interstitial ad loaded successfully")
                 }
@@ -89,3 +89,4 @@ extension View {
 extension Notification.Name {
     static let interstitialAdDismissed = Notification.Name("interstitialAdDismissed")
 }
+

@@ -13,6 +13,8 @@ struct ListView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var images: [ImageData]
     @State private var viewModel = ImgurDataViewModel()
+    @State private var imageToDelete: ImageData? = nil
+    @State private var showDeleteAlert = false
     
     var body: some View {
         List {
@@ -48,16 +50,8 @@ struct ListView: View {
                             .foregroundColor(.blue)
                             .swipeActions {
                                 Button("Delete", systemImage: "trash", role: .destructive) {
-                                    modelContext.delete(image)
-                                    // API経由でも削除する
-                                    Task {
-                                        do {
-                                            let response = try await viewModel.delete(hashcode: image.deletehas)
-                                            print("Response: \(response)")
-                                        } catch {
-                                            print("Error: \(error)")
-                                        }
-                                    }
+                                    imageToDelete = image
+                                    showDeleteAlert = true
                                 }
                             }
                             .padding(.bottom,10)
@@ -80,6 +74,30 @@ struct ListView: View {
             
             OldListView()
             
+        }
+        .alert("Delete this image?", isPresented: $showDeleteAlert, presenting: imageToDelete) { image in
+            Button("OK", role: .destructive) {
+                modelContext.delete(image)
+                do {
+                    try modelContext.save()
+                } catch {
+                    print("Error saving context after delete: \(error)")
+                }
+                Task {
+                    do {
+                        let response = try await viewModel.delete(hashcode: image.deletehas)
+                        print("Response: \(response)")
+                    } catch {
+                        print("Error: \(error)")
+                    }
+                }
+                imageToDelete = nil
+            }
+            Button("Cancel", role: .cancel) {
+                imageToDelete = nil
+            }
+        } message: { image in
+            Text(image.url)
         }
         
     }
