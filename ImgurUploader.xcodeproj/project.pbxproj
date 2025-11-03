@@ -31,6 +31,7 @@
 		B11B06B22CC3E91300A96B89 /* DropboxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11B06B12CC3E91300A96B89 /* DropboxViewModel.swift */; };
 		B1AF691B2CC6C3D700C4D44E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B1AF69192CC6C3D700C4D44E /* GoogleService-Info.plist */; };
 		B1BC79B12CAACA0F005798C6 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = B1BC79B02CAACA0F005798C6 /* FirebaseCrashlytics */; };
+		B1FE83152EB8D50F00285439 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = B1FE83142EB8D50F00285439 /* AppIcon.icon */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		B11B06B12CC3E91300A96B89 /* DropboxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropboxViewModel.swift; sourceTree = "<group>"; };
 		B1AF69192CC6C3D700C4D44E /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B1AF691D2CC6C48300C4D44E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B1FE83142EB8D50F00285439 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 				24AF264A2BFA47FD00578A16 /* View */,
 				2442EEA62B4ABB7400ECDE60 /* Assets.xcassets */,
 				2442EEA82B4ABB7400ECDE60 /* Preview Content */,
+				B1FE83142EB8D50F00285439 /* AppIcon.icon */,
 			);
 			path = ImgurUploader;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2442EEAA2B4ABB7400ECDE60 /* Preview Assets.xcassets in Resources */,
+				B1FE83152EB8D50F00285439 /* AppIcon.icon in Resources */,
 				2442EEA72B4ABB7400ECDE60 /* Assets.xcassets in Resources */,
 				B1AF691B2CC6C3D700C4D44E /* GoogleService-Info.plist in Resources */,
 			);
