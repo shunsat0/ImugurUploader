@@ -28,20 +28,20 @@ struct ListView: View {
                             case .success(let image):
                                 image.resizable()
                                     .aspectRatio(contentMode: .fill)
-                                    .frame(width: 60, height: 60)
+                                    .frame(width: 110.0, height: 110.0)
+                                    .cornerRadius(12.0)
                             case .failure:
                                 Image(systemName: "photo")
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
-                                    .frame(width: 60, height: 60)
+                                    .frame(width: 110.0, height: 110.0)
+                                    .cornerRadius(12.0)
                             case .empty:
                                 ProgressView()
                             @unknown default:
                                 EmptyView()
                             }
                         }
-                        .frame(width: 100, height: 100)
-                        .cornerRadius(10)
                     }
                     
                     VStack(alignment: .leading) {
