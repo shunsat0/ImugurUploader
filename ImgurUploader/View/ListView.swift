@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import SimpleToast
 
 struct ListView: View {
     @Environment(\.dismiss) var dismiss
@@ -15,6 +16,11 @@ struct ListView: View {
     @State private var viewModel = ImgurDataViewModel()
     @State private var imageToDelete: ImageData? = nil
     @State private var showDeleteAlert = false
+    @State private var showToast = false
+    
+    private let toastOptions = SimpleToastOptions(
+        hideAfter: 3
+    )
     
     var body: some View {
         List {
@@ -66,6 +72,7 @@ struct ListView: View {
                     Button {
                         UIPasteboard.general.string = imageUrl
                         print(imageUrl)
+                        showToast.toggle()
                     } label: {
                         Image(systemName: "document.on.document")
                     }
@@ -99,7 +106,14 @@ struct ListView: View {
         } message: { image in
             Text(image.url)
         }
-        
+        .simpleToast(isPresented: $showToast, options: toastOptions) {
+            Label("Copy successful.", systemImage: "info.circle")
+            .padding()
+            .background(Color.blue.opacity(0.8))
+            .foregroundColor(Color.white)
+            .cornerRadius(10)
+            .padding(.top)
+        }
     }
     
 }
