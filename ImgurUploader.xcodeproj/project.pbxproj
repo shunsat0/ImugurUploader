@@ -31,6 +31,8 @@
 		B11B06B22CC3E91300A96B89 /* DropboxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11B06B12CC3E91300A96B89 /* DropboxViewModel.swift */; };
 		B1AF691B2CC6C3D700C4D44E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B1AF69192CC6C3D700C4D44E /* GoogleService-Info.plist */; };
 		B1BC79B12CAACA0F005798C6 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = B1BC79B02CAACA0F005798C6 /* FirebaseCrashlytics */; };
+		B1FE83152EB8D50F00285439 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = B1FE83142EB8D50F00285439 /* AppIcon.icon */; };
+		B1FE83182EBA5BA400285439 /* SimpleToast in Frameworks */ = {isa = PBXBuildFile; productRef = B1FE83172EBA5BA400285439 /* SimpleToast */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +75,7 @@
 		B11B06B12CC3E91300A96B89 /* DropboxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropboxViewModel.swift; sourceTree = "<group>"; };
 		B1AF69192CC6C3D700C4D44E /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B1AF691D2CC6C48300C4D44E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B1FE83142EB8D50F00285439 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +88,7 @@
 				B1BC79B12CAACA0F005798C6 /* FirebaseCrashlytics in Frameworks */,
 				24339B3E2C0C841F00AA81E5 /* Alamofire in Frameworks */,
 				24B72A062C49A1E6007D68AC /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+				B1FE83182EBA5BA400285439 /* SimpleToast in Frameworks */,
 				B11B06A22CC183D100A96B89 /* SwiftyDropbox in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -146,6 +150,7 @@
 				24AF264A2BFA47FD00578A16 /* View */,
 				2442EEA62B4ABB7400ECDE60 /* Assets.xcassets */,
 				2442EEA82B4ABB7400ECDE60 /* Preview Content */,
+				B1FE83142EB8D50F00285439 /* AppIcon.icon */,
 			);
 			path = ImgurUploader;
 			sourceTree = "<group>";
@@ -222,6 +227,7 @@
 				24B86D042C4B9C1B0036E4FE /* WebUI */,
 				B1BC79B02CAACA0F005798C6 /* FirebaseCrashlytics */,
 				B11B06A12CC183D100A96B89 /* SwiftyDropbox */,
+				B1FE83172EBA5BA400285439 /* SimpleToast */,
 			);
 			productName = ImgurUploader;
 			productReference = 2442EE9F2B4ABB7300ECDE60 /* ImgurUploader.app */;
@@ -301,6 +307,7 @@
 				24B72A0C2C49A450007D68AC /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 				24B86D032C4B9C1B0036E4FE /* XCRemoteSwiftPackageReference "WebUI" */,
 				B11B06A02CC183D100A96B89 /* XCRemoteSwiftPackageReference "SwiftyDropbox" */,
+				B1FE83162EBA5BA400285439 /* XCRemoteSwiftPackageReference "SimpleToast" */,
 			);
 			productRefGroup = 2442EEA02B4ABB7300ECDE60 /* Products */;
 			projectDirPath = "";
@@ -319,6 +326,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2442EEAA2B4ABB7400ECDE60 /* Preview Assets.xcassets in Resources */,
+				B1FE83152EB8D50F00285439 /* AppIcon.icon in Resources */,
 				2442EEA72B4ABB7400ECDE60 /* Assets.xcassets in Resources */,
 				B1AF691B2CC6C3D700C4D44E /* GoogleService-Info.plist in Resources */,
 			);
@@ -772,6 +780,14 @@
 				minimumVersion = 10.1.0;
 			};
 		};
+		B1FE83162EBA5BA400285439 /* XCRemoteSwiftPackageReference "SimpleToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sanzaru/SimpleToast.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.11.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -803,6 +819,11 @@
 		B1BC79B02CAACA0F005798C6 /* FirebaseCrashlytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = FirebaseCrashlytics;
+		};
+		B1FE83172EBA5BA400285439 /* SimpleToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B1FE83162EBA5BA400285439 /* XCRemoteSwiftPackageReference "SimpleToast" */;
+			productName = SimpleToast;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
